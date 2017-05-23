@@ -1,16 +1,16 @@
 {
   "name": "enanlypay",
-  "description": "An empty new project",
+  "description": "EnanlyPay mobile",
   "slug": "enanlypay",
-  "privacy": "public",
+  "privacy": "unlisted",
   "sdkVersion": "17.0.0",
   "version": "1.0.0",
   "orientation": "portrait",
   "primaryColor": "#cccccc",
-  "icon": "./assets/icons/app.png",
+  "icon": ".app/assets/icons/app.png",
   "loading": {
-    "icon": "./assets/icons/loading.png",
-    "hideExponentText": false
+    "icon": ".app/assets/icons/loading.png",
+    "hideExponentText": true
   },
   "packagerOpts": {
     "assetExts": ["ttf", "mp4"]
