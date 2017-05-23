@@ -7,9 +7,9 @@
   "version": "1.0.0",
   "orientation": "portrait",
   "primaryColor": "#cccccc",
-  "icon": ".app/assets/icons/app.png",
+  "icon": "./app/assets/icons/app.png",
   "loading": {
-    "icon": ".app/assets/icons/loading.png",
+    "icon": "./app/assets/icons/loading.png",
     "hideExponentText": true
   },
   "packagerOpts": {
