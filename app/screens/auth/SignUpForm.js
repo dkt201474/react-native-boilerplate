@@ -24,7 +24,7 @@ const SignUpForm = ({
   password,
   phoneNumber,
   handleOnPress,
-  navigation,
+  handlePickerOnPress,
 }) => (
   <Container style={StyleSheet.flatten(AppStyles.containerBg)}>
     <Content style={AppStyles.mt25}>
@@ -49,6 +49,7 @@ const SignUpForm = ({
           <Item style={StyleSheet.flatten(AppStyles.mb10)}>
             <Picker
                 mode="dialog"
+                onValueChange={handlePickerOnPress}
                 selectedValue={countryCode}
                 style={{width: 76}}
             >
@@ -77,7 +78,7 @@ const SignUpForm = ({
           </Item>
         </View>
 
-        <Button block style={StyleSheet.flatten(AppStyles.button)}>
+        <Button block onPress={handleOnPress} style={StyleSheet.flatten(AppStyles.button)} >
           <Text style={AppStyles.buttonText}>Continuer</Text>
         </Button>
 
@@ -98,8 +99,8 @@ SignUpForm.propTypes = {
   countryCode: Proptypes.string,
   firstname: Proptypes.string,
   handleOnPress: Proptypes.func,
+  handlePickerOnPress: Proptypes.func,
   lastname: Proptypes.string,
-  navigation: Proptypes.func,
   password: Proptypes.string,
   phoneNumber: Proptypes.string,
 };
@@ -111,7 +112,7 @@ SignUpForm.defaultProps = {
   confirmPassword: '',
   password: '',
   phoneNumber: '',
-  navigation: null,
+  handlePickerOnPress: null,
   handleOnPress: null,
 };
 

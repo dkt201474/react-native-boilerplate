@@ -49,7 +49,7 @@ const SignIn = ({email, password, handleOnPress, navigation}) => (
           </Row>
         </View>
 
-        <Button block style={StyleSheet.flatten(AppStyles.button)}>
+        <Button block onPress={handleOnPress} style={StyleSheet.flatten(AppStyles.button)} >
           <Text style={AppStyles.buttonText}>Connexion</Text>
         </Button>
 
@@ -66,7 +66,6 @@ const SignIn = ({email, password, handleOnPress, navigation}) => (
             </View>
           </Row>
       </TouchableOpacity>
-
 
       </Grid>
     </Content>
