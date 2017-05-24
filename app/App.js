@@ -1,25 +1,14 @@
-import React from 'react';
-import Expo, { Font } from 'expo';
+import React, { Component } from 'react';
 
-import { StyleSheet, Text, View } from 'react-native';
+// Screens
+import SignIn from './screens/auth/SignIn';
 
-class App extends React.Component {
-  render() {
+class App extends Component {
+  render () {
     return (
-      <View style={styles.container}>
-        <Text>Hello</Text>
-      </View>
+     <SignIn />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
