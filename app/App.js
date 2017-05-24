@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 // Screens
-import SignIn from './screens/auth/SignIn';
-import SignUpForm from './screens/auth/SignUpForm';
+import { SignUpForm } from './lib/Screen';
 
 class App extends Component {
   render () {

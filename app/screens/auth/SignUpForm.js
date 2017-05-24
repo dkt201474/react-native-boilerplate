@@ -1,6 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity, } from 'react-native';
+import { StyleSheet, Text, View, } from 'react-native';
 import {
   Container,
   Content,
@@ -13,7 +13,7 @@ import {
   Button,
 } from 'native-base';
 
-import { Metrics, Colors, AppStyles, } from '../../theme';
+import { Metrics, AppStyles, } from '../../theme';
 const PickerItem = Picker.Item;
 
 const SignUpForm = ({
