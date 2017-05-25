@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Proptypes from 'prop-types';
 import { Image, StyleSheet, Text, View, TouchableOpacity, } from 'react-native';
 import {
@@ -13,11 +14,20 @@ import {
   Button,
   Icon,
 } from 'native-base';
+import { NavigationActions } from 'react-navigation';
 
 import { Images, Metrics, Colors, AppStyles, } from '../../theme';
+import { AppStatusBar } from '../../lib/components';
 
-const SignIn = ({email, password, handleOnPress, navigation}) => (
+const SignIn = ({
+  email,
+  handleLogin,
+  handleForgotPassword,
+  handleNewAccount,
+}) => (
   <Container style={StyleSheet.flatten(AppStyles.containerBg)}>
+    <AppStatusBar />
+    
     <Content>
       <Row style={styles.logoWrapper}>
         <Image source={Images.logo} style={styles.logo} />
@@ -43,17 +53,17 @@ const SignIn = ({email, password, handleOnPress, navigation}) => (
           </Item>
 
           <Row style={[AppStyles.mt25, AppStyles.mb15, AppStyles.centerX]}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleForgotPassword}>
               <Text style={AppStyles.link}>Mot de passe oublié ?</Text>
             </TouchableOpacity>
           </Row>
         </View>
 
-        <Button block onPress={handleOnPress} style={StyleSheet.flatten(AppStyles.button)} >
+        <Button block onPress={handleLogin} style={StyleSheet.flatten(AppStyles.button)} >
           <Text style={AppStyles.buttonText}>Connexion</Text>
         </Button>
 
-        <TouchableOpacity style={AppStyles.mt25}>
+        <TouchableOpacity onPress={handleNewAccount} style={AppStyles.mt25}>
           <Row style={AppStyles.centerX}>
             <View>
               <Text style={styles.newAccountText}>Nouveau compte </Text>
@@ -71,6 +81,9 @@ const SignIn = ({email, password, handleOnPress, navigation}) => (
     </Content>
   </Container>
 );
+
+/* screen config */
+SignIn.navigationOptions = { header: false, };
 
 const styles = StyleSheet.create({
   logoWrapper: {
@@ -93,16 +106,17 @@ const styles = StyleSheet.create({
 
 SignIn.propTypes = {
   email: Proptypes.string,
-  handleOnPress: Proptypes.func,
-  navigation: Proptypes.func,
-  password: Proptypes.string,
+  handleForgotPassword: Proptypes.func.isRequired,
+  handleLogin: Proptypes.func.isRequired,
+  handleNewAccount: Proptypes.func.isRequired,
 };
 
-SignIn.defaultProps = {
-  email: '',
-  handleOnPress: null,
-  navigation: null,
-  password: '',
-};
+SignIn.defaultProps = { email: '', };
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+  handleNewAccount: () => dispatch(NavigationActions.navigate({ routeName: 'SignUpForm'})),
+  handleForgotPassword: () => dispatch(NavigationActions.navigate({ routeName: 'SignIn'})),
+  handleLogin: () => dispatch(NavigationActions.navigate({ routeName: 'SignUpValidation'})),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);

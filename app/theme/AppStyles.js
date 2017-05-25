@@ -37,6 +37,7 @@ const AppStyles = {
     fontSize: Fonts.size.sm,
   },
   link: { color: Colors.gray8 },
+  textWhite: { color: Colors.white },
 
   // button
   button: {
@@ -50,6 +51,12 @@ const AppStyles = {
   gray8: { color: Colors.gray8 },
   gray9: { color: Colors.gray9 },
   gray10: { color: Colors.gray10 },
+
+  // Background
+  bgGray7: { backgroundColor: Colors.gray7 },
+  bgGray8: { backgroundColor: Colors.gray8 },
+  bgGray9: { backgroundColor: Colors.gray9 },
+  bgGray10: { backgroundColor: Colors.gray10 },
 
   // Center
   centerX: {justifyContent: 'center'},

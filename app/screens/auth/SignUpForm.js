@@ -1,6 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import { StyleSheet, Text, View, } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import {
   Container,
   Content,
@@ -13,7 +13,11 @@ import {
   Button,
 } from 'native-base';
 
-import { Metrics, AppStyles, } from '../../theme';
+/* App imports */
+import { Metrics, AppStyles, Colors, } from '../../theme';
+import { AppStatusBar } from '../../lib/components';
+
+/* imports config */
 const PickerItem = Picker.Item;
 
 const SignUpForm = ({
@@ -27,6 +31,8 @@ const SignUpForm = ({
   handlePickerOnPress,
 }) => (
   <Container style={StyleSheet.flatten(AppStyles.containerBg)}>
+    <AppStatusBar />
+
     <Content style={AppStyles.mt25}>
       <Grid style={styles.formWrapper}>
         <Row style={AppStyles.centerX}>
@@ -86,6 +92,13 @@ const SignUpForm = ({
     </Content>
   </Container>
 );
+
+/* screen config */
+SignUpForm.navigationOptions = {
+  headerTitle: 'Inscription',
+  headerTintColor: Colors.white,
+  headerStyle: AppStyles.bgGray10,
+};
 
 const styles = StyleSheet.create({
   formWrapper: {
