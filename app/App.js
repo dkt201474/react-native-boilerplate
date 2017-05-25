@@ -8,7 +8,6 @@ import AppWithNavigationState from './navigators/SignInStack';
 class App extends Component {
 
   render () {
-
     // The app store is creaeted
     const store = createStore(rootReducer);
 
