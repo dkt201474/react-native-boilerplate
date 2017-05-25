@@ -16,7 +16,8 @@ import {
 } from 'native-base';
 import { NavigationActions } from 'react-navigation';
 
-import { Images, Metrics, Colors, AppStyles, } from '../../theme';
+import { Images, Metrics, Colors, } from '../../theme';
+import AppStyles, { margin, block, colors, align, inline, } from '../../theme/AppStyles';
 import { AppStatusBar } from '../../lib/components';
 
 const SignIn = ({
@@ -25,7 +26,7 @@ const SignIn = ({
   handleForgotPassword,
   handleNewAccount,
 }) => (
-  <Container style={StyleSheet.flatten(AppStyles.containerBg)}>
+  <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
 
     <Content>
@@ -34,16 +35,16 @@ const SignIn = ({
       </Row>
 
       <Grid style={styles.formWrapper}>
-        <Row style={AppStyles.centerX}>
+        <Row style={align.centerX}>
           <H1 style={StyleSheet.flatten(styles.titleText)}>Connexion</H1>
         </Row>
 
-        <Row style={AppStyles.centerX}>
-          <Text style={StyleSheet.flatten(AppStyles.subtitle)}>Heureux de vous revoir</Text>
+        <Row style={align.centerX}>
+          <Text style={StyleSheet.flatten(inline.subtitle)}>Heureux de vous revoir</Text>
         </Row>
 
-        <View style={AppStyles.mt10}>
-          <Item style={StyleSheet.flatten(AppStyles.mb10)}>
+        <View style={margin.mt10}>
+          <Item style={StyleSheet.flatten(margin.mb10)}>
             <Input placeholder="email" value={email} />
             <Label style={{ color: Colors.gray7 }}>@enanlypay.com</Label>
           </Item>
@@ -52,9 +53,9 @@ const SignIn = ({
             <Input placeholder="mot de passe" secureTextEntry />
           </Item>
 
-          <Row style={[AppStyles.mt25, AppStyles.mb15, AppStyles.centerX]}>
+          <Row style={[margin.mt25, margin.mb15, align.centerX]}>
             <TouchableOpacity onPress={handleForgotPassword}>
-              <Text style={AppStyles.link}>Mot de passe oublié ?</Text>
+              <Text style={inline.link}>Mot de passe oublié ?</Text>
             </TouchableOpacity>
           </Row>
         </View>
@@ -63,15 +64,15 @@ const SignIn = ({
           <Text style={AppStyles.buttonText}>Connexion</Text>
         </Button>
 
-        <TouchableOpacity onPress={handleNewAccount} style={AppStyles.mt25}>
-          <Row style={AppStyles.centerX}>
+        <TouchableOpacity onPress={handleNewAccount} style={margin.mt25}>
+          <Row style={align.centerX}>
             <View>
               <Text style={styles.newAccountText}>Nouveau compte </Text>
             </View>
             <View>
               <Icon
                   name="ios-arrow-round-forward"
-                  style={StyleSheet.flatten(AppStyles.gray10)}
+                  style={StyleSheet.flatten(colors.gray10)}
               />
             </View>
           </Row>
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   formWrapper: {
-    ...AppStyles.whiteContainer,
+    ...block.whiteContainer,
     marginTop: Metrics.m25,
   },
   newAccountText: {
@@ -113,7 +114,7 @@ SignIn.defaultProps = { email: '', };
 const mapDispatchToProps = (dispatch) => ({
   handleNewAccount: () => dispatch(NavigationActions.navigate({ routeName: 'SignUpForm'})),
   handleForgotPassword: () => dispatch(NavigationActions.navigate({ routeName: 'SignIn'})),
-  handleLogin: () => dispatch(NavigationActions.navigate({ routeName: 'SignUpValidation'})),
+  handleLogin: () => dispatch(NavigationActions.navigate({ routeName: 'FindUs'})),
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);

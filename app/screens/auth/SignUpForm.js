@@ -14,7 +14,8 @@ import {
 } from 'native-base';
 
 /* App imports */
-import { Metrics, AppStyles, } from '../../theme';
+import { Metrics, } from '../../theme';
+import AppStyles, { margin, inline, block, align } from '../../theme/AppStyles';
 import { AppStatusBar } from '../../lib/components';
 
 /* imports config */
@@ -30,29 +31,29 @@ const SignUpForm = ({
   handleOnPress,
   handlePickerOnPress,
 }) => (
-  <Container style={StyleSheet.flatten(AppStyles.containerBg)}>
+  <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
 
-    <Content style={AppStyles.mt25}>
+    <Content style={margin.mt25}>
       <Grid style={styles.formWrapper}>
-        <Row style={AppStyles.centerX}>
+        <Row style={align.centerX}>
           <H1 style={StyleSheet.flatten(styles.titleText)}>Inscription</H1>
         </Row>
 
-        <Row style={AppStyles.centerX}>
-          <Text style={StyleSheet.flatten(AppStyles.subtitle)}>Presque fini...</Text>
+        <Row style={align.centerX}>
+          <Text style={StyleSheet.flatten(inline.subtitle)}>Presque fini...</Text>
         </Row>
 
-        <View style={AppStyles.mt10}>
-          <Item style={StyleSheet.flatten(AppStyles.mb10)}>
+        <View style={margin.mt10}>
+          <Item style={StyleSheet.flatten(margin.mb10)}>
             <Input placeholder="Nom" value={lastname} />
           </Item>
 
-          <Item style={StyleSheet.flatten(AppStyles.mb10)}>
+          <Item style={StyleSheet.flatten(margin.mb10)}>
             <Input placeholder="Prénom" value={firstname} />
           </Item>
 
-          <Item style={StyleSheet.flatten(AppStyles.mb10)}>
+          <Item style={StyleSheet.flatten(margin.mb10)}>
             <Picker
                 mode="dialog"
                 onValueChange={handlePickerOnPress}
@@ -95,7 +96,7 @@ const SignUpForm = ({
 
 const styles = StyleSheet.create({
   formWrapper: {
-    ...AppStyles.whiteContainer,
+    ...block.whiteContainer,
     marginTop: Metrics.m25,
   },
 });

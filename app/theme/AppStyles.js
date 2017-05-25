@@ -2,66 +2,7 @@ import Fonts from './Fonts';
 import Metrics from './Metrics';
 import Colors from './Colors';
 
-const AppStyles = {
-  // Block
-  containerBg: { backgroundColor: Colors.bg, },
-  containerPadding: {
-    paddingVertical: Metrics.m20,
-    paddingHorizontal: Metrics.m10,
-  },
-  containerMargin: {
-    marginHorizontal: Metrics.m10,
-    marginVertical: Metrics.m10,
-  },
-  container: {
-    backgroundColor: Colors.bg,
-    paddingVertical: Metrics.m20,
-    paddingHorizontal: Metrics.m10,
-    marginHorizontal: Metrics.m10,
-    marginVertical: Metrics.m10,
-  },
-  whiteContainer: {
-    backgroundColor: Colors.white,
-    paddingVertical: Metrics.m20,
-    paddingHorizontal: Metrics.m10,
-    marginHorizontal: Metrics.m10,
-    marginVertical: Metrics.m10,
-  },
-
-  // Inline
-  textBold: { fontWeight: 'bold', },
-  textCenter: { justifyContent: 'center'},
-  title: { color: Colors.gray10, },
-  subtitle: {
-    color: Colors.gray7,
-    fontSize: Fonts.size.sm,
-  },
-  link: { color: Colors.gray8 },
-  textWhite: { color: Colors.white },
-
-  // button
-  button: {
-    backgroundColor: Colors.gray10,
-    marginTop: Metrics.m10,
-  },
-  buttonText: { color: Colors.white, },
-
-  // Colors
-  gray7: { color: Colors.gray7 },
-  gray8: { color: Colors.gray8 },
-  gray9: { color: Colors.gray9 },
-  gray10: { color: Colors.gray10 },
-
-  // Background
-  bgGray7: { backgroundColor: Colors.gray7 },
-  bgGray8: { backgroundColor: Colors.gray8 },
-  bgGray9: { backgroundColor: Colors.gray9 },
-  bgGray10: { backgroundColor: Colors.gray10 },
-
-  // Center
-  centerX: {justifyContent: 'center'},
-  centerY: {alignItems: 'center'},
-
+export const margin = {
   // margins
   m0: { margin: 0 },
   m5: { margin: 5 },
@@ -98,7 +39,9 @@ const AppStyles = {
   mb15: { marginBottom: 15 },
   mb20: { marginBottom: 20 },
   mb25: { marginBottom: 25 },
+};
 
+export const padding = {
   // padding
   p0: { padding: 0 },
   p5: { padding: 5 },
@@ -135,7 +78,91 @@ const AppStyles = {
   pb15: { paddingBottom: 15 },
   pb20: { paddingBottom: 20 },
   pb25: { paddingBottom: 25 },
+};
 
+export const inline = {
+  // Inline
+  textBold: { fontWeight: 'bold', },
+  textCenter: { justifyContent: 'center'},
+  title: { color: Colors.gray10, },
+  subtitle: {
+    color: Colors.gray7,
+    fontSize: Fonts.size.sm,
+  },
+  link: { color: Colors.gray8 },
+  textWhite: { color: Colors.white },
+};
+
+export const block = {
+  // Block
+  containerBg: { backgroundColor: Colors.bg, },
+  containerPadding: {
+    paddingVertical: Metrics.m20,
+    paddingHorizontal: Metrics.m10,
+  },
+  containerMargin: {
+    marginHorizontal: Metrics.m10,
+    marginVertical: Metrics.m10,
+  },
+  container: {
+    backgroundColor: Colors.bg,
+    paddingVertical: Metrics.m20,
+    paddingHorizontal: Metrics.m10,
+    marginHorizontal: Metrics.m10,
+    marginVertical: Metrics.m10,
+  },
+  whiteContainer: {
+    backgroundColor: Colors.white,
+    paddingVertical: Metrics.m20,
+    paddingHorizontal: Metrics.m10,
+    marginHorizontal: Metrics.m10,
+    marginVertical: Metrics.m10,
+  },
+};
+
+export const colors = {
+  // Colors
+  gray1: { color: Colors.gray1 },
+  gray2: { color: Colors.gray2 },
+  gray3: { color: Colors.gray3 },
+  gray4: { color: Colors.gray4 },
+  gray5: { color: Colors.gray6 },
+  gray6: { color: Colors.gray6 },
+  gray7: { color: Colors.gray7 },
+  gray8: { color: Colors.gray8 },
+  gray9: { color: Colors.gray9 },
+  gray10: { color: Colors.gray10 },
+};
+
+export const bg = {
+  // Background
+  gray1: { backgroundColor: Colors.gray1 },
+  gray2: { backgroundColor: Colors.gray2 },
+  gray3: { backgroundColor: Colors.gray3 },
+  gray4: { backgroundColor: Colors.gray4 },
+  gray5: { backgroundColor: Colors.gray6 },
+  gray6: { backgroundColor: Colors.gray6 },
+  gray7: { backgroundColor: Colors.gray7 },
+  gray8: { backgroundColor: Colors.gray8 },
+  gray9: { backgroundColor: Colors.gray9 },
+  gray10: { backgroundColor: Colors.gray10 },
+};
+
+export const align = {
+  centerX: {justifyContent: 'center'},
+  centerY: {alignItems: 'center'},
+  left: {justifyContent: 'flex-start'},
+  right: {justifyContent: 'flex-end'},
+  top: {alignItems: 'flex-start'},
+  bottom: {alignItems: 'flex-end'},
+};
+
+const AppStyles = {
+  button: {
+    backgroundColor: Colors.gray10,
+    marginTop: Metrics.m10,
+  },
+  buttonText: { color: Colors.white, },
 };
 
 export default AppStyles;

@@ -11,24 +11,25 @@ import {
   Button,
 } from 'native-base';
 
-import { Metrics, AppStyles, } from '../../theme';
+import { Metrics, } from '../../theme';
+import AppStyles, { block, align, inline, margin, } from '../../theme/AppStyles';
 import { AppStatusBar } from '../../lib/components';
 
 const SignUpValidation = ({ confirmationCode, handleOnPress }) => (
-  <Container style={StyleSheet.flatten(AppStyles.containerBg)}>
+  <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
 
     <Grid style={styles.formWrapper}>
-      <Row style={AppStyles.centerX}>
+      <Row style={align.centerX}>
         <H1 style={StyleSheet.flatten(styles.titleText)}>Confirmation</H1>
       </Row>
 
-      <Row style={AppStyles.centerX}>
-        <Text style={StyleSheet.flatten(AppStyles.subtitle)}>Confirmez votre inscription</Text>
+      <Row style={align.centerX}>
+        <Text style={StyleSheet.flatten(inline.subtitle)}>Confirmez votre inscription</Text>
       </Row>
 
-      <View style={AppStyles.mt10}>
-        <Item style={StyleSheet.flatten(AppStyles.mb10)}>
+      <View style={margin.mt10}>
+        <Item style={StyleSheet.flatten(margin.mb10)}>
           <Input placeholder="X X X X" value={confirmationCode} />
         </Item>
       </View>
@@ -42,7 +43,7 @@ const SignUpValidation = ({ confirmationCode, handleOnPress }) => (
 
 const styles = StyleSheet.create({
   formWrapper: {
-    ...AppStyles.whiteContainer,
+    ...block.whiteContainer,
     height: Metrics.height * 0.5,
     marginTop: Metrics.height * 0.25,
     marginBottom: Metrics.height * 0.25,
