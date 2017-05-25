@@ -171,6 +171,19 @@ const AppStyles = {
     ...padding.pv10,
   },
   lastItem: { ...padding.pv10, },
+  arrowItem: {
+    alignItems: 'center',
+    marginTop: Metrics.m10,
+    marginBottom: Metrics.m5,
+    marginHorizontal: Metrics.m5,
+    paddingHorizontal: Metrics.m10,
+    paddingVertical: Metrics.m8,
+    backgroundColor: Colors.white,
+  },
+  header: {
+    headerTintColor: Colors.white,
+    headerStyle: [bg.gray10, padding.pt25, padding.pb10],
+  },
 };
 
 export default AppStyles;

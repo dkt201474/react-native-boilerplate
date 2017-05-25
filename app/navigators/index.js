@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addNavigationHelpers, } from 'react-navigation';
 
 /* Navigator imports */
-import SignInStack from './SignInStack';
+import DefaultNavigatorTab from './DefaultNavigatorTab';
 
 /*
     - The root navigator aware of redux is created
@@ -13,7 +13,7 @@ import SignInStack from './SignInStack';
     - can trigger action that return a new nav object (Ex. change screen)
 */
 const AppWithNavigationState = ({ dispatch, nav }) => (
-  <SignInStack navigation={addNavigationHelpers({ dispatch, state: nav })} />
+  <DefaultNavigatorTab navigation={addNavigationHelpers({ dispatch, state: nav })} />
 );
 
 AppWithNavigationState.propTypes = {

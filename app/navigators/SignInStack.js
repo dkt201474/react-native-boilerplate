@@ -1,12 +1,10 @@
-import { Colors, } from '../theme';
-import { bg, } from '../theme/AppStyles';
+import AppStyles from '../theme/AppStyles';
 import { StackNavigator } from 'react-navigation';
 
 import {
   SignIn,
   SignUpForm,
   SignUpValidation,
-  FindUs,
 } from '../lib/screens';
 
 export default StackNavigator({
@@ -17,27 +15,18 @@ export default StackNavigator({
   SignUpForm: {
     screen: SignUpForm,
     navigationOptions: () => ({
+      ...AppStyles.header,
       headerTitle: 'Inscription',
-      headerTintColor: Colors.white,
-      headerStyle: bg.gray10,
+      tabBarVisible: false,
     }),
   },
   SignUpValidation: {
     screen: SignUpValidation,
     navigationOptions: () => ({
-      headerTitle: 'Confirmation',
-      headerTintColor: Colors.white,
-      headerStyle: bg.gray10,
+      ...AppStyles.header,
       headerLeft: null,
-    }),
-  },
-
-  FindUs: {
-    screen: FindUs,
-    navigationOptions: () => ({
-      headerTitle: 'Nous trouver',
-      headerTintColor: Colors.white,
-      headerStyle: bg.gray10,
+      tabBarVisible: false,
+      headerTitle: 'Confirmation',
     }),
   },
 });

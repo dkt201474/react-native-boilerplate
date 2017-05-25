@@ -45,7 +45,12 @@ const SignIn = ({
 
         <View style={margin.mt10}>
           <Item style={StyleSheet.flatten(margin.mb10)}>
-            <Input placeholder="email" value={email} />
+            {
+              email ?
+              <Input placeholder="email" value={email} />
+              :
+              <Input placeholder="email" />
+            }
             <Label style={{ color: Colors.gray7 }}>@enanlypay.com</Label>
           </Item>
 
@@ -113,8 +118,8 @@ SignIn.defaultProps = { email: '', };
 
 const mapDispatchToProps = (dispatch) => ({
   handleNewAccount: () => dispatch(NavigationActions.navigate({ routeName: 'SignUpForm'})),
-  handleForgotPassword: () => dispatch(NavigationActions.navigate({ routeName: 'SignIn'})),
-  handleLogin: () => dispatch(NavigationActions.navigate({ routeName: 'FindUs'})),
+  handleForgotPassword: () => dispatch(NavigationActions.navigate({ routeName: 'ContactUs'})),
+  handleLogin: () => dispatch(NavigationActions.navigate({ routeName: 'Services'})),
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);
