@@ -27,7 +27,7 @@ const SignIn = ({
 }) => (
   <Container style={StyleSheet.flatten(AppStyles.containerBg)}>
     <AppStatusBar />
-    
+
     <Content>
       <Row style={styles.logoWrapper}>
         <Image source={Images.logo} style={styles.logo} />
@@ -81,9 +81,6 @@ const SignIn = ({
     </Content>
   </Container>
 );
-
-/* screen config */
-SignIn.navigationOptions = { header: false, };
 
 const styles = StyleSheet.create({
   logoWrapper: {

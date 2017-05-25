@@ -1,3 +1,4 @@
+import { Colors, AppStyles, } from '../theme';
 import { StackNavigator } from 'react-navigation';
 
 import {
@@ -7,7 +8,25 @@ import {
 } from '../lib/screens';
 
 export default StackNavigator({
-  SignIn: { screen: SignIn },
-  SignUpForm: { screen: SignUpForm },
-  SignUpValidation: { screen: SignUpValidation },
+  SignIn: {
+    screen: SignIn,
+    navigationOptions: () => ({ header: false, }),
+  },
+  SignUpForm: {
+    screen: SignUpForm,
+    navigationOptions: () => ({
+      headerTitle: 'Inscription',
+      headerTintColor: Colors.white,
+      headerStyle: AppStyles.bgGray10,
+    }),
+  },
+  SignUpValidation: {
+    screen: SignUpValidation,
+    navigationOptions: () => ({
+      headerTitle: 'Confirmation',
+      headerTintColor: Colors.white,
+      headerStyle: AppStyles.bgGray10,
+      headerLeft: null,
+    }),
+  },
 });

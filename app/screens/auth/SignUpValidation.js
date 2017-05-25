@@ -11,13 +11,13 @@ import {
   Button,
 } from 'native-base';
 
-import { Metrics, AppStyles, Colors, } from '../../theme';
+import { Metrics, AppStyles, } from '../../theme';
 import { AppStatusBar } from '../../lib/components';
 
 const SignUpValidation = ({ confirmationCode, handleOnPress }) => (
   <Container style={StyleSheet.flatten(AppStyles.containerBg)}>
     <AppStatusBar />
-    
+
     <Grid style={styles.formWrapper}>
       <Row style={AppStyles.centerX}>
         <H1 style={StyleSheet.flatten(styles.titleText)}>Confirmation</H1>
@@ -39,14 +39,6 @@ const SignUpValidation = ({ confirmationCode, handleOnPress }) => (
     </Grid>
   </Container>
 );
-
-/* screen config */
-SignUpValidation.navigationOptions = {
-  headerTitle: 'Confirmation',
-  headerLeft: null,
-  headerTintColor: Colors.white,
-  headerStyle: AppStyles.bgGray10,
-};
 
 const styles = StyleSheet.create({
   formWrapper: {

@@ -14,7 +14,7 @@ import {
 } from 'native-base';
 
 /* App imports */
-import { Metrics, AppStyles, Colors, } from '../../theme';
+import { Metrics, AppStyles, } from '../../theme';
 import { AppStatusBar } from '../../lib/components';
 
 /* imports config */
@@ -92,13 +92,6 @@ const SignUpForm = ({
     </Content>
   </Container>
 );
-
-/* screen config */
-SignUpForm.navigationOptions = {
-  headerTitle: 'Inscription',
-  headerTintColor: Colors.white,
-  headerStyle: AppStyles.bgGray10,
-};
 
 const styles = StyleSheet.create({
   formWrapper: {
