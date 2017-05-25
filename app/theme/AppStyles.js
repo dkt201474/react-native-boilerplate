@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import Fonts from './Fonts';
 import Metrics from './Metrics';
 import Colors from './Colors';
@@ -163,6 +164,13 @@ const AppStyles = {
     marginTop: Metrics.m10,
   },
   buttonText: { color: Colors.white, },
+  separator: { marginBottom: 5, },
+  item: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: Colors.gray6,
+    ...padding.pv10,
+  },
+  lastItem: { ...padding.pv10, },
 };
 
 export default AppStyles;
