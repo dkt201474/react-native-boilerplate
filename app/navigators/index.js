@@ -7,7 +7,7 @@ import { addNavigationHelpers, } from 'react-navigation';
 import SignInStack from './SignInStack';
 
 /*
-    - The root navigation aware of redux is created
+    - The root navigator aware of redux is created
     - It passes navigation prop that contains dispatch (func) and nav (obj)
     - Now every child component have navigation prop and
     - can trigger action that return a new nav object (Ex. change screen)
