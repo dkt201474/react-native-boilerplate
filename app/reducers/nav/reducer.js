@@ -1,18 +1,21 @@
-import { NavigationActions } from 'react-navigation';
-
+import initialNavState from './initialState';
 import DefaultNavigatorTab from '../../navigators/DefaultNavigatorTab';
 
-const gotoSignInStack = DefaultNavigatorTab.router.getActionForPathAndParams('SignInStack');
-const initialNavState = DefaultNavigatorTab.router.getStateForAction(gotoSignInStack);
+// Actions
+import {
+  GOTO_NEW_ACCOUNT,
+  GOTO_FORGOT_PASSWORD,
+  NavigationActions,
+} from '../../lib/constants';
 
 const nav = (state = initialNavState, action) => {
   switch (action.type) {
-  case 'NewAccount':
+  case GOTO_NEW_ACCOUNT:
     return DefaultNavigatorTab.router.getStateForAction(
       NavigationActions.navigate({ routeName: 'SignUpForm'}),
       state
     );
-  case 'ForgotPassword':
+  case GOTO_FORGOT_PASSWORD:
     return DefaultNavigatorTab.router.getStateForAction(
       NavigationActions.navigate({ routeName: 'SignUpValidation'}),
       state
@@ -21,6 +24,6 @@ const nav = (state = initialNavState, action) => {
   default:
     return DefaultNavigatorTab.router.getStateForAction(action, state);
   }
-}
+};
 
 export default nav;

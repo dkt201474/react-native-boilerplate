@@ -14,8 +14,12 @@ import {
   Button,
   Icon,
 } from 'native-base';
-import { NavigationActions } from 'react-navigation';
 
+// App imports
+import {
+  gotoNewAccount,
+  gotoForgotPassword
+} from '../../reducers/nav/navActions';
 import { Images, Metrics, Colors, } from '../../theme';
 import AppStyles, { margin, block, colors, align, inline, } from '../../theme/AppStyles';
 import { AppStatusBar } from '../../lib/components';
@@ -117,9 +121,9 @@ SignIn.propTypes = {
 SignIn.defaultProps = { email: '', };
 
 const mapDispatchToProps = (dispatch) => ({
-  handleNewAccount: () => dispatch(NavigationActions.navigate({ routeName: 'SignUpForm'})),
-  handleForgotPassword: () => dispatch(NavigationActions.navigate({ routeName: 'ContactUs'})),
-  handleLogin: () => dispatch(NavigationActions.navigate({ routeName: 'Services'})),
+  handleNewAccount: () => dispatch(gotoNewAccount()),
+  handleForgotPassword: () => dispatch(gotoForgotPassword()),
+  handleLogin: () => dispatch(gotoNewAccount()),
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);

@@ -5,16 +5,20 @@ import {
   Content,
   List,
 } from 'native-base';
+import Collapsible from 'react-native-collapsible';
+import Accordion from 'react-native-collapsible/Accordion';
+
 
 import AppStyles, { padding, margin, colors, block } from '../../theme/AppStyles';
 import { AppStatusBar, AppItem, } from '../../lib/components';
 
-const ContactUs = () => (
+const ContactUs = ({ activeSection, collapsed }) => (
   <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
 
     <Content style={margin.mt25}>
-      <List style={StyleSheet.flatten(padding.pb20)}>
+
+      {/* <List style={StyleSheet.flatten(padding.pb20)}>
         <TouchableOpacity>
           <AppItem
               body={{
@@ -98,7 +102,7 @@ const ContactUs = () => (
               rowStyle={AppStyles.arrowItem}
           />
         </TouchableOpacity>
-      </List>
+      </List> */}
     </Content>
   </Container>
 );
