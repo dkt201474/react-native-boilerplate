@@ -19,7 +19,7 @@ import {
 import {
   gotoNewAccount,
   gotoForgotPassword
-} from '../../reducers/nav/navActions';
+} from '../../reducers/nav/actions';
 import { Images, Metrics, Colors, } from '../../theme';
 import AppStyles, { margin, block, colors, align, inline, } from '../../theme/AppStyles';
 import { AppStatusBar } from '../../lib/components';
