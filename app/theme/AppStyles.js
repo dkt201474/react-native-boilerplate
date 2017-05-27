@@ -123,6 +123,7 @@ export const block = {
 
 export const colors = {
   // Colors
+  white: { color: Colors.white },
   gray1: { color: Colors.gray1 },
   gray2: { color: Colors.gray2 },
   gray3: { color: Colors.gray3 },
@@ -133,10 +134,22 @@ export const colors = {
   gray8: { color: Colors.gray8 },
   gray9: { color: Colors.gray9 },
   gray10: { color: Colors.gray10 },
+
+  yellow1: { color: Colors.yellow1 },
+  yellow2: { color: Colors.yellow2 },
+  yellow3: { color: Colors.yellow3 },
+  yellow4: { color: Colors.yellow4 },
+  yellow5: { color: Colors.yellow6 },
+  yellow6: { color: Colors.yellow6 },
+  yellow7: { color: Colors.yellow7 },
+  yellow8: { color: Colors.yellow8 },
+  yellow9: { color: Colors.yellow9 },
+  yellow10: { color: Colors.yellow10 },
 };
 
 export const bg = {
   // Background
+  white: { backgroundColor: Colors.white },
   gray1: { backgroundColor: Colors.gray1 },
   gray2: { backgroundColor: Colors.gray2 },
   gray3: { backgroundColor: Colors.gray3 },
@@ -147,6 +160,17 @@ export const bg = {
   gray8: { backgroundColor: Colors.gray8 },
   gray9: { backgroundColor: Colors.gray9 },
   gray10: { backgroundColor: Colors.gray10 },
+
+  yellow1: { backgroundColor: Colors.yellow1 },
+  yellow2: { backgroundColor: Colors.yellow2 },
+  yellow3: { backgroundColor: Colors.yellow3 },
+  yellow4: { backgroundColor: Colors.yellow4 },
+  yellow5: { backgroundColor: Colors.yellow6 },
+  yellow6: { backgroundColor: Colors.yellow6 },
+  yellow7: { backgroundColor: Colors.yellow7 },
+  yellow8: { backgroundColor: Colors.yellow8 },
+  yellow9: { backgroundColor: Colors.yellow9 },
+  yellow10: { backgroundColor: Colors.yellow10 },
 };
 
 export const align = {

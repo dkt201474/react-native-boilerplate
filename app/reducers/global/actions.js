@@ -1,13 +1,10 @@
 import {
-  GOTO_NEW_ACCOUNT,
-  GOTO_FORGOT_PASSWORD,
+  TOGGLE_EXPANDED,
+  SET_SECTION,
 } from '../../lib/constants';
 
-export const gotoNewAccount = (data) => ({
-  type: GOTO_NEW_ACCOUNT,
-  payload: data,
-});
-export const gotoForgotPassword = (data) => ({
-  type: GOTO_FORGOT_PASSWORD,
-  payload: data,
+export const toggleExpanded = () => ({ type: TOGGLE_EXPANDED, });
+export const setSection = (section) => ({
+  type: SET_SECTION,
+  payload: section,
 });

@@ -1,5 +1,7 @@
-import DefaultNavigatorTab from '../../navigators/DefaultNavigatorTab';
-
-const gotoSignInStack = DefaultNavigatorTab.router.getActionForPathAndParams('SignInStack');
-
-export default DefaultNavigatorTab.router.getStateForAction(gotoSignInStack);
+/*
+* --> Initial state of the react-native-collapsible component
+*/
+export const collapsible = {
+  activeSection: false,
+  collapsed: true,
+};

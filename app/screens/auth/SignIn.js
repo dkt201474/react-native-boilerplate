@@ -18,7 +18,8 @@ import {
 // App imports
 import {
   gotoNewAccount,
-  gotoForgotPassword
+  gotoForgotPassword,
+  gotoHome,
 } from '../../reducers/nav/actions';
 import { Images, Metrics, Colors, } from '../../theme';
 import AppStyles, { margin, block, colors, align, inline, } from '../../theme/AppStyles';
@@ -123,7 +124,7 @@ SignIn.defaultProps = { email: '', };
 const mapDispatchToProps = (dispatch) => ({
   handleNewAccount: () => dispatch(gotoNewAccount()),
   handleForgotPassword: () => dispatch(gotoForgotPassword()),
-  handleLogin: () => dispatch(gotoNewAccount()),
+  handleLogin: () => dispatch(gotoHome()),
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);

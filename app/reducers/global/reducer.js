@@ -1,29 +1,29 @@
-import initialNavState from './initialState';
-import DefaultNavigatorTab from '../../navigators/DefaultNavigatorTab';
+import { combineReducers } from 'redux';
+import { collapsible } from './initialState';
 
 // Actions
 import {
-  GOTO_NEW_ACCOUNT,
-  GOTO_FORGOT_PASSWORD,
-  NavigationActions,
+  TOGGLE_EXPANDED,
+  SET_SECTION,
 } from '../../lib/constants';
 
-const nav = (state = initialNavState, action) => {
+/*
+* --> Reducer that manage the collapsible state
+*/
+const collapsibleReducer = (state = collapsible, action) => {
   switch (action.type) {
-  case GOTO_NEW_ACCOUNT:
-    return DefaultNavigatorTab.router.getStateForAction(
-      NavigationActions.navigate({ routeName: 'SignUpForm'}),
-      state
-    );
-  case GOTO_FORGOT_PASSWORD:
-    return DefaultNavigatorTab.router.getStateForAction(
-      NavigationActions.navigate({ routeName: 'SignUpValidation'}),
-      state
-    );
+  case TOGGLE_EXPANDED:
+    return {...state, collapsed: !state.collapsed}
+  case SET_SECTION:
+    return {...state, activeSection: action.payload}
 
   default:
-    return DefaultNavigatorTab.router.getStateForAction(action, state);
+    return state;
   }
 };
 
-export default nav;
+
+/*
+* --> The returned reducer is the sum of all global reducers of our app
+*/
+export default combineReducers({ collapsibleReducer });

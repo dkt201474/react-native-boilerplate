@@ -5,6 +5,7 @@ import DefaultNavigatorTab from '../../navigators/DefaultNavigatorTab';
 import {
   GOTO_NEW_ACCOUNT,
   GOTO_FORGOT_PASSWORD,
+  GOTO_HOME,
   NavigationActions,
 } from '../../lib/constants';
 
@@ -18,6 +19,11 @@ const nav = (state = initialNavState, action) => {
   case GOTO_FORGOT_PASSWORD:
     return DefaultNavigatorTab.router.getStateForAction(
       NavigationActions.navigate({ routeName: 'SignUpValidation'}),
+      state
+    );
+  case GOTO_HOME:
+    return DefaultNavigatorTab.router.getStateForAction(
+      NavigationActions.navigate({ routeName: 'Services'}),
       state
     );
 
