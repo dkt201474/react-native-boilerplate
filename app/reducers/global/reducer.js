@@ -1,21 +1,24 @@
 import { combineReducers } from 'redux';
-import { collapsible } from './initialState';
+import { modal, } from './initialState';
 
 // Actions
 import {
-  TOGGLE_EXPANDED,
-  SET_SECTION,
+  TOGGLE_MODAL,
+  OPEN_MODAL,
+  CLOSE_MODAL,
 } from '../../lib/constants';
 
 /*
-* --> Reducer that manage the collapsible state
+* --> Reducer that manage the modal state
 */
-const collapsibleReducer = (state = collapsible, action) => {
+const modalReducer = (state = modal, action) => {
   switch (action.type) {
-  case TOGGLE_EXPANDED:
-    return {...state, collapsed: !state.collapsed}
-  case SET_SECTION:
-    return {...state, activeSection: action.payload}
+  case TOGGLE_MODAL:
+    return { ...state, isOpen: !state.isOpen, }
+  case OPEN_MODAL:
+    return { ...state, isOpen: true, }
+  case CLOSE_MODAL:
+    return { ...state, isOpen: false, }
 
   default:
     return state;
@@ -26,4 +29,4 @@ const collapsibleReducer = (state = collapsible, action) => {
 /*
 * --> The returned reducer is the sum of all global reducers of our app
 */
-export default combineReducers({ collapsibleReducer });
+export default combineReducers({ modalReducer });

@@ -3,27 +3,37 @@ import DefaultNavigatorTab from '../../navigators/DefaultNavigatorTab';
 
 // Actions
 import {
-  GOTO_NEW_ACCOUNT,
-  GOTO_FORGOT_PASSWORD,
-  GOTO_HOME,
+  GOTO_HOME_FROM_SIGNIN,
+  RESET_PASSWORD,
+  GOTO_HOME_FROM_SIGNUP_VALIDATION,
+  GOTO_SIGNUP_VALIDATION,
   NavigationActions,
 } from '../../lib/constants';
 
 const nav = (state = initialNavState, action) => {
   switch (action.type) {
-  case GOTO_NEW_ACCOUNT:
+  case GOTO_HOME_FROM_SIGNIN:
+    console.log(action.payload);
+
     return DefaultNavigatorTab.router.getStateForAction(
-      NavigationActions.navigate({ routeName: 'SignUpForm'}),
+      NavigationActions.navigate({ routeName: 'SignIn'}),
       state
     );
-  case GOTO_FORGOT_PASSWORD:
+  case GOTO_SIGNUP_VALIDATION:
     return DefaultNavigatorTab.router.getStateForAction(
-      NavigationActions.navigate({ routeName: 'SignUpValidation'}),
+      NavigationActions.navigate({ routeName: 'SignIn'}),
       state
     );
-  case GOTO_HOME:
+  case GOTO_HOME_FROM_SIGNUP_VALIDATION:
     return DefaultNavigatorTab.router.getStateForAction(
-      NavigationActions.navigate({ routeName: 'Services'}),
+      NavigationActions.navigate({ routeName: 'SignIn'}),
+      state
+    );
+  case RESET_PASSWORD:
+    console.log(action.payload);
+
+    return DefaultNavigatorTab.router.getStateForAction(
+      NavigationActions.navigate({ routeName: 'SignIn'}),
       state
     );
 

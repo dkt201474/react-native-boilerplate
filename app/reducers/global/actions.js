@@ -1,10 +1,9 @@
 import {
-  TOGGLE_EXPANDED,
-  SET_SECTION,
+  TOGGLE_MODAL,
+  OPEN_MODAL,
+  CLOSE_MODAL,
 } from '../../lib/constants';
 
-export const toggleExpanded = () => ({ type: TOGGLE_EXPANDED, });
-export const setSection = (section) => ({
-  type: SET_SECTION,
-  payload: section,
-});
+export const toggleModal = () => ({ type: TOGGLE_MODAL, });
+export const openModal = () => ({ type: OPEN_MODAL, });
+export const closeModal = () => ({ type: CLOSE_MODAL, });

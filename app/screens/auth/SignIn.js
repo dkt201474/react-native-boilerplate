@@ -8,7 +8,6 @@ import {
   Grid,
   Row,
   H1,
-  Label,
   Input,
   Item,
   Button,
@@ -16,11 +15,7 @@ import {
 } from 'native-base';
 
 // App imports
-import {
-  gotoNewAccount,
-  gotoForgotPassword,
-  gotoHome,
-} from '../../reducers/nav/actions';
+import { gotoHomeFromSignIn, } from '../../reducers/nav/actions';
 import { Images, Metrics, Colors, } from '../../theme';
 import AppStyles, { margin, block, colors, align, inline, } from '../../theme/AppStyles';
 import { AppStatusBar } from '../../lib/components';
@@ -28,8 +23,7 @@ import { AppStatusBar } from '../../lib/components';
 const SignIn = ({
   email,
   handleLogin,
-  handleForgotPassword,
-  handleNewAccount,
+  navigation
 }) => (
   <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
@@ -56,7 +50,6 @@ const SignIn = ({
               :
               <Input placeholder="email" />
             }
-            <Label style={{ color: Colors.gray7 }}>@enanlypay.com</Label>
           </Item>
 
           <Item>
@@ -64,7 +57,7 @@ const SignIn = ({
           </Item>
 
           <Row style={[margin.mt25, margin.mb15, align.centerX]}>
-            <TouchableOpacity onPress={handleForgotPassword}>
+            <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
               <Text style={inline.link}>Mot de passe oublié ?</Text>
             </TouchableOpacity>
           </Row>
@@ -74,7 +67,7 @@ const SignIn = ({
           <Text style={AppStyles.buttonText}>Connexion</Text>
         </Button>
 
-        <TouchableOpacity onPress={handleNewAccount} style={margin.mt25}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUpForm')} style={margin.mt25}>
           <Row style={align.centerX}>
             <View>
               <Text style={styles.newAccountText}>Nouveau compte </Text>
@@ -114,17 +107,12 @@ const styles = StyleSheet.create({
 
 SignIn.propTypes = {
   email: Proptypes.string,
-  handleForgotPassword: Proptypes.func.isRequired,
   handleLogin: Proptypes.func.isRequired,
-  handleNewAccount: Proptypes.func.isRequired,
+  navigation: Proptypes.object.isRequired,
 };
 
 SignIn.defaultProps = { email: '', };
 
-const mapDispatchToProps = (dispatch) => ({
-  handleNewAccount: () => dispatch(gotoNewAccount()),
-  handleForgotPassword: () => dispatch(gotoForgotPassword()),
-  handleLogin: () => dispatch(gotoHome()),
-});
+const mapDispatchToProps = (dispatch) => ({ handleLogin: () => dispatch(gotoHomeFromSignIn({email: "hi", password: "ok"})), });
 
 export default connect(null, mapDispatchToProps)(SignIn);

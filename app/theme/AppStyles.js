@@ -89,6 +89,7 @@ export const inline = {
   subtitle: {
     color: Colors.gray7,
     fontSize: Fonts.size.sm,
+    textAlign: 'center',
   },
   link: { color: Colors.gray8 },
   textWhite: { color: Colors.white },
@@ -204,6 +205,18 @@ const AppStyles = {
     paddingVertical: Metrics.m8,
     backgroundColor: Colors.white,
   },
+  menuItemWrapper: {
+    ...padding.ph10,
+    ...bg.white,
+    borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: Colors.gray5,
+    borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: Colors.gray5,
+  },
+  menuItem: {
+    ...padding.pv15,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: Colors.gray5,
+  },
+  menuItemLast: { ...padding.pv15, },
   header: {
     headerTintColor: Colors.white,
     headerStyle: [bg.gray10, padding.pt25, padding.pb10],

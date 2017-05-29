@@ -22,7 +22,7 @@ const ContactUs = () => (
       </Body>
     </Header>
 
-    <Content style={margin.mt25}>
+    <Content style={margin.mt15}>
       <Grid style={block.whiteContainer}>
         <Row style={AppStyles.separator}><Text style={inline.textBold}>Bénin</Text></Row>
         <Row style={AppStyles.separator}><Text style={inline.textBold}>Cotonou</Text></Row>

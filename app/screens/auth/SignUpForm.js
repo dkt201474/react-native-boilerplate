@@ -23,10 +23,7 @@ const PickerItem = Picker.Item;
 
 const SignUpForm = ({
   countryCode,
-  lastname,
-  firstname,
-  confirmPassword,
-  password,
+  email,
   phoneNumber,
   handleOnPress,
   handlePickerOnPress,
@@ -41,47 +38,43 @@ const SignUpForm = ({
         </Row>
 
         <Row style={align.centerX}>
-          <Text style={StyleSheet.flatten(inline.subtitle)}>Presque fini...</Text>
+          <Text style={[inline.subtitle, {textAlign: 'center'}]}>
+            Nous avons besoin de votre numéro de téléphone pour des raisons de
+            sécurité. Nous allons vous envoyer un code de confirmation par SMS.
+          </Text>
         </Row>
 
         <View style={margin.mt10}>
           <Item style={StyleSheet.flatten(margin.mb10)}>
-            <Input placeholder="Nom" value={lastname} />
-          </Item>
-
-          <Item style={StyleSheet.flatten(margin.mb10)}>
-            <Input placeholder="Prénom" value={firstname} />
+            {
+              email ?
+              <Input placeholder="email" value={email} />
+              :
+              <Input placeholder="email" />
+            }
           </Item>
 
           <Item style={StyleSheet.flatten(margin.mb10)}>
             <Picker
                 mode="dialog"
                 onValueChange={handlePickerOnPress}
-                selectedValue={countryCode}
+                selectedValue="229"
                 style={{width: 76}}
             >
-              <PickerItem
-                  label="+227"
-                  value="227"
-              />
-              <PickerItem
-                  label="+228"
-                  value="228"
-              />
-              <PickerItem
-                  label="+229"
-                  value="229"
-              />
+              {countryCode.map((code) => (
+                <PickerItem key={code} label={'+' + code} value={code} />
+              ))}
             </Picker>
-            <Input placeholder="Téléphone" value={phoneNumber} />
+            {
+              phoneNumber ?
+              <Input placeholder="téléphone" value={phoneNumber} />
+              :
+              <Input placeholder="téléphone" />
+            }
           </Item>
 
           <Item>
             <Input placeholder="mot de passe" secureTextEntry />
-          </Item>
-
-          <Item>
-            <Input placeholder="confirmation" secureTextEntry />
           </Item>
         </View>
 
@@ -102,25 +95,19 @@ const styles = StyleSheet.create({
 });
 
 SignUpForm.propTypes = {
-  confirmPassword: Proptypes.string,
-  countryCode: Proptypes.string,
-  firstname: Proptypes.string,
+  countryCode: Proptypes.array,
+  email: Proptypes.string,
   handleOnPress: Proptypes.func,
   handlePickerOnPress: Proptypes.func,
-  lastname: Proptypes.string,
-  password: Proptypes.string,
   phoneNumber: Proptypes.string,
 };
 
 SignUpForm.defaultProps = {
-  countryCode: '229',
-  firstname: '',
-  lastname: '',
-  confirmPassword: '',
-  password: '',
-  phoneNumber: '',
+  countryCode: ['228', '229'],
+  email: '',
   handlePickerOnPress: null,
   handleOnPress: null,
+  phoneNumber: '',
 };
 
 export default SignUpForm;

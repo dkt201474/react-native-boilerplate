@@ -1,18 +1,26 @@
 import {
-  GOTO_NEW_ACCOUNT,
-  GOTO_FORGOT_PASSWORD,
-  GOTO_HOME,
+  GOTO_HOME_FROM_SIGNIN,
+  GOTO_HOME_FROM_SIGNUP_VALIDATION,
+  GOTO_SIGNUP_VALIDATION,
+  RESET_PASSWORD,
 } from '../../lib/constants';
 
-export const gotoNewAccount = (data) => ({
-  type: GOTO_NEW_ACCOUNT,
+export const gotoHomeFromSignIn = (data) => ({
+  type: GOTO_HOME_FROM_SIGNIN,
   payload: data,
 });
-export const gotoForgotPassword = (data) => ({
-  type: GOTO_FORGOT_PASSWORD,
+
+export const gotoHomeFromSignUpValidation = (data) => ({
+  type: GOTO_HOME_FROM_SIGNUP_VALIDATION,
   payload: data,
 });
-export const gotoHome = (data) => ({
-  type: GOTO_HOME,
+
+export const gotoSignUpValidation = (data) => ({
+  type: GOTO_SIGNUP_VALIDATION,
+  payload: data,
+});
+
+export const resetPassword = (data) => ({
+  type: RESET_PASSWORD,
   payload: data,
 });

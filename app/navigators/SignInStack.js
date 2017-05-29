@@ -5,6 +5,7 @@ import {
   SignIn,
   SignUpForm,
   SignUpValidation,
+  ForgotPassword,
 } from '../lib/screens';
 
 export default StackNavigator({
@@ -17,6 +18,14 @@ export default StackNavigator({
     navigationOptions: () => ({
       ...AppStyles.header,
       headerTitle: 'Inscription',
+      tabBarVisible: false,
+    }),
+  },
+  ForgotPassword: {
+    screen: ForgotPassword,
+    navigationOptions: () => ({
+      ...AppStyles.header,
+      headerTitle: 'Mot de passe oublié',
       tabBarVisible: false,
     }),
   },

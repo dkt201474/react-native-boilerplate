@@ -109,13 +109,13 @@ const AppItem = ({ left, right, body, rowStyle }) => (
 
 AppItem.propTypes = {
   body: PropTypes.shape({
-    colStyle: View.propTypes.style,
+    colStyle: PropTypes.any,
     text: PropTypes.string,
   }).isRequired,
 
   left: PropTypes.shape({
     handleOnPress: PropTypes.function,
-    colStyle: View.propTypes.style,
+    colStyle: PropTypes.any,
     iconName: PropTypes.string,
     iconStyle: Icon.propTypes.style,
     text: PropTypes.string,
@@ -124,14 +124,14 @@ AppItem.propTypes = {
 
   right: PropTypes.shape({
     handleOnPress: PropTypes.function,
-    colStyle: View.propTypes.style,
+    colStyle: PropTypes.any,
     iconName: PropTypes.string,
     iconStyle: Icon.propTypes.style,
     text: PropTypes.string,
     textStyle: Text.propTypes.style,
   }),
 
-  rowStyle: View.propTypes.style,
+  rowStyle: PropTypes.any,
 };
 
 AppItem.defaultProps = {

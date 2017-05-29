@@ -1,6 +1,10 @@
 export { NavigationActions } from 'react-navigation';
-export const GOTO_NEW_ACCOUNT = 'GOTO_NEW_ACCOUNT';
-export const GOTO_FORGOT_PASSWORD = 'NEW_ACCOUNT';
-export const GOTO_HOME = 'GOTO_HOME';
-export const SET_SECTION = 'SET_SECTION';
-export const TOGGLE_EXPANDED = 'TOGGLE_EXPANDED';
+export const GOTO_HOME_FROM_SIGNIN = 'GOTO_HOME_FROM_SIGNIN';
+export const GOTO_HOME_FROM_SIGNUP_VALIDATION = 'GOTO_HOME_FROM_SIGNUP_VALIDATION';
+export const GOTO_SIGNUP_VALIDATION = 'GOTO_SIGNUP_VALIDATION';
+
+export const RESET_PASSWORD = 'RESET_PASSWORD';
+
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
