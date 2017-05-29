@@ -8,6 +8,8 @@ import {
   Row,
   Col,
   Icon,
+  Header,
+  Body,
 } from 'native-base';
 import { bg, colors, block, margin, padding, } from '../../theme/AppStyles';
 import { Colors } from '../../theme';
@@ -102,9 +104,14 @@ const Services = () => {
 
   return (
     <Container style={block.containerBg}>
-      <StatusBar
-          barStyle="dark-content"
-      />
+      <StatusBar barStyle="dark-content" />
+
+      <Header style={bg.gray10} >
+        <Body>
+          <Text style={[colors.white, {fontWeight: 'bold', fontSize: 17}]}>Nos Services</Text>
+        </Body>
+      </Header>
+
       <Content style={margin.mt25}>
         <Accordion
             renderContent={_renderContent}

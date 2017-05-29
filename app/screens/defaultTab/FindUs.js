@@ -5,14 +5,21 @@ import {
   Content,
   Grid,
   Row,
+  Header,
+  Body,
 } from 'native-base';
 
-import AppStyles, { block, inline, margin } from '../../theme/AppStyles';
+import AppStyles, { bg, colors, block, inline, align, margin } from '../../theme/AppStyles';
 import { AppStatusBar, AppItem, } from '../../lib/components';
 
 const FindUs = () => (
   <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
+    <Header style={bg.gray10} >
+      <Body style={align.centerX}>
+        <Text style={[colors.white, {fontWeight: 'bold', fontSize: 17}]}>Nous trouver</Text>
+      </Body>
+    </Header>
 
     <Content style={margin.mt25}>
       <Grid style={block.whiteContainer}>

@@ -5,14 +5,22 @@ import {
   Content,
   Grid,
   Row,
+  Header,
+  Body,
 } from 'native-base';
 
-import AppStyles, { block, inline, margin } from '../../theme/AppStyles';
+import AppStyles, { block, colors, bg, inline, margin } from '../../theme/AppStyles';
 import { AppStatusBar, AppItem, } from '../../lib/components';
 
 const ContactUs = () => (
   <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
+
+    <Header style={bg.gray10} >
+      <Body>
+        <Text style={[colors.white, {fontWeight: 'bold', fontSize: 17}]}>Nous joindre</Text>
+      </Body>
+    </Header>
 
     <Content style={margin.mt25}>
       <Grid style={block.whiteContainer}>
