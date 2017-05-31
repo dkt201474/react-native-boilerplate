@@ -16,6 +16,7 @@ import { Field, reduxForm, } from 'redux-form';
 import { connect } from 'react-redux';
 import Modal from 'react-native-modal';
 import isEmail from 'validator/lib/isEmail';
+import normalizeEmail from 'validator/lib/normalizeEmail';
 
 /* App imports */
 import { resetPassword, closeForgotPasswordModal } from '../../reducers/auth/actions';
@@ -41,7 +42,7 @@ const validate = (values) => {
 /*
 * Function that will be call if form get submitting
 */
-const submit = (values, dispatch) => dispatch(resetPassword(values));
+const submit = (values, dispatch) => dispatch(resetPassword(normalizeEmail(values.email)));
 
 
 const renderInput = (field) => (
