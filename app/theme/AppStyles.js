@@ -188,6 +188,10 @@ const AppStyles = {
     backgroundColor: Colors.gray10,
     marginTop: Metrics.m10,
   },
+  buttonDisabled: {
+    backgroundColor: Colors.gray7,
+    marginTop: Metrics.m10,
+  },
   buttonText: { color: Colors.white, },
   separator: { marginBottom: 5, },
   item: {

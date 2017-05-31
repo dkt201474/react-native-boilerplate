@@ -63,65 +63,77 @@ const renderInput = (field) => (
   </View>
 );
 
-let ForgotPassword = ({ handleSubmit, visibleModal, email, handleOnCloseModal }) => (
-  <Container style={StyleSheet.flatten(block.containerBg)}>
-    <AppStatusBar />
+let ForgotPassword = ({ handleSubmit, visibleModal, email, handleOnCloseModal, ...rest }) => {
+  console.log(rest.invalid);
 
-    <Content>
-      <Grid style={styles.formWrapper}>
-        <Row style={align.centerX}>
-          <H1 style={StyleSheet.flatten(styles.titleText)}>Réinitialisation</H1>
-        </Row>
+  return (
+    <Container style={StyleSheet.flatten(block.containerBg)}>
+      <AppStatusBar />
 
-        <Row style={align.centerX}>
-          <Text style={[inline.subtitle, {marginHorizontal: 25}]}>
-            Entrez votre email pour réinitialiser votre mot de passe
-          </Text>
-        </Row>
+      <Content>
+        <Grid style={styles.formWrapper}>
+          <Row style={align.centerX}>
+            <H1 style={StyleSheet.flatten(styles.titleText)}>Réinitialisation</H1>
+          </Row>
 
-        <View style={margin.mt10}>
-          <Field component={renderInput} name="email" placeholder="Email" />
-        </View>
+          <Row style={align.centerX}>
+            <Text style={[inline.subtitle, {marginHorizontal: 25}]}>
+              Entrez votre email pour réinitialiser votre mot de passe
+            </Text>
+          </Row>
 
-        <Button block onPress={handleSubmit(submit)} style={StyleSheet.flatten(AppStyles.button)} >
-          <Text style={AppStyles.buttonText}>Réinitialiser</Text>
-        </Button>
-      </Grid>
-    </Content>
-
-    <View style={{ justifyContent: 'center', }}>
-          <Modal isVisible={visibleModal}>
-            <View
-                style={{
-                  height: 300,
-                  padding: 10,
-                  backgroundColor: 'white',
-                  justifyContent: 'center',
-                }}
-            >
-                <View>
-                  <Icon
-                      name="ios-checkmark-circle"
-                      style={{
-                        textAlign: 'center',
-                        color: Colors.success,
-                        fontSize: 50,
-                        marginBottom: 15,
-                      }}
-                  />
-                </View>
-                <Text style={{textAlign: 'center', fontSize: Metrics.m20}}>Mot de passe réinitialisé</Text>
-                <Text style={{textAlign: 'center', color: Colors.gray7}}>Veuillez suivre les instructions envoyées à votre email pour finaliser la réinitialisation de votre mot de passe</Text>
-                <View style={{marginTop: Metrics.m25}}>
-                  <Button block onPress={handleOnCloseModal} style={StyleSheet.flatten(AppStyles.button)} >
-                    <Text style={AppStyles.buttonText}>OK</Text>
-                  </Button>
-                </View>
-              </View>
-            </Modal>
+          <View style={margin.mt10}>
+            <Field component={renderInput} name="email" placeholder="Email" />
           </View>
-  </Container>
-);
+
+          <Button
+              block
+              disabled={rest.invalid}
+              onPress={handleSubmit(submit)}
+              style={rest.invalid
+                ? StyleSheet.flatten(AppStyles.buttonDisabled)
+                : StyleSheet.flatten(AppStyles.button)
+              }
+          >
+            <Text style={AppStyles.buttonText}>Réinitialiser</Text>
+          </Button>
+        </Grid>
+      </Content>
+
+      <View style={{ justifyContent: 'center', }}>
+            <Modal isVisible={visibleModal}>
+              <View
+                  style={{
+                    height: 300,
+                    padding: 10,
+                    backgroundColor: 'white',
+                    justifyContent: 'center',
+                  }}
+              >
+                  <View>
+                    <Icon
+                        name="ios-checkmark-circle"
+                        style={{
+                          textAlign: 'center',
+                          color: Colors.success,
+                          fontSize: 50,
+                          marginBottom: 15,
+                        }}
+                    />
+                  </View>
+                  <Text style={{textAlign: 'center', fontSize: Metrics.m20}}>Mot de passe réinitialisé</Text>
+                  <Text style={{textAlign: 'center', color: Colors.gray7}}>Veuillez suivre les instructions envoyées à votre email pour finaliser la réinitialisation de votre mot de passe</Text>
+                  <View style={{marginTop: Metrics.m25}}>
+                    <Button block onPress={handleOnCloseModal} style={StyleSheet.flatten(AppStyles.button)} >
+                      <Text style={AppStyles.buttonText}>OK</Text>
+                    </Button>
+                  </View>
+                </View>
+              </Modal>
+            </View>
+    </Container>
+  );
+};
 
 const styles = StyleSheet.create({
   formWrapper: {
@@ -133,7 +145,7 @@ const styles = StyleSheet.create({
 ForgotPassword.propTypes = { handleSubmit: Proptypes.func.isRequired, };
 
 ForgotPassword.defaultProps = {
-  email: '',
+  email: 'dkt201474@gmail.com',
 };
 
 const mapStateToProps = (state) => ({ visibleModal: state.auth.visibleModal, });
