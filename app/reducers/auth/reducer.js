@@ -1,5 +1,8 @@
 /* Initial State */
-const initialState = { visibleModal: false, };
+const initialState = {
+  visibleModal: false,
+  email: '',
+};
 
 /* Actions */
 import {
@@ -12,7 +15,7 @@ import {
   CLOSE_FORGOT_PASSWORD_MODAL,
 } from '../../lib/constants';
 
-const nav = (state = initialState, action) => {
+const auth = (state = initialState, action) => {
   switch (action.type) {
   case GOTO_HOME_FROM_SIGNIN:
     return state;
@@ -22,8 +25,6 @@ const nav = (state = initialState, action) => {
     return state;
 
   case RESET_PASSWORD:
-    console.log(action.payload);
-
     return {...state, visibleModal: true};
 
   case SHOW_MODAL:
@@ -40,4 +41,4 @@ const nav = (state = initialState, action) => {
   }
 };
 
-export default nav;
+export default auth;

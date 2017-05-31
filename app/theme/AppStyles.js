@@ -184,6 +184,18 @@ export const align = {
 };
 
 const AppStyles = {
+  modal: {
+    height: 300,
+    padding: 10,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+  },
+  modalIcon: {
+    textAlign: 'center',
+    color: Colors.success,
+    fontSize: 50,
+    marginBottom: 15,
+  },
   button: {
     backgroundColor: Colors.gray10,
     marginTop: Metrics.m10,
