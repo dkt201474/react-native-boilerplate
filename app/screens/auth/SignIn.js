@@ -13,17 +13,66 @@ import {
   Button,
   Icon,
 } from 'native-base';
+import { Field, reduxForm, } from 'redux-form';
+import isEmail from 'validator/lib/isEmail';
+import isLength from 'validator/lib/isLength';
+import normalizeEmail from 'validator/lib/normalizeEmail';
 
 // App imports
-import { gotoHomeFromSignIn, } from '../../reducers/nav/actions';
+import { gotoHomeFromSignIn, } from '../../reducers/auth/actions';
 import { Images, Metrics, Colors, } from '../../theme';
 import AppStyles, { margin, block, colors, align, inline, } from '../../theme/AppStyles';
 import { AppStatusBar } from '../../lib/components';
 
-const SignIn = ({
+/*
+* Function that will be call to ensure all field are properly setted
+*/
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.email) {
+    errors.email = 'Champ requis';
+  } else if (!isEmail(values.email)) {
+    errors.email = 'Email invalide';
+  }
+
+  if (!values.password) {
+    errors.password = 'Champ requis';
+  } else if (!isLength(values.password, {min: 8})) {
+    errors.password = 'Au moins 8 caractères requis';
+  }
+
+  return errors;
+};
+
+/*
+* Function that will be call if form get submitting
+*/
+const submit = (values, dispatch) => dispatch(gotoHomeFromSignIn(normalizeEmail(values.email)));
+
+const renderInput = (field) => (
+  <View>
+    <Item
+        error={field.meta.error && field.meta.touched && true}
+        style={StyleSheet.flatten(margin.mb10)}
+    >
+      <Input
+          {...field.input}
+          onChangeText={field.input.onChange}
+          placeholder={field.placeholder}
+      />
+    </Item>
+
+    {field.meta.error && field.meta.touched && <Text style={{textAlign: 'right', color: Colors.error}}>{field.meta.error}</Text>}
+  </View>
+);
+
+let SignIn = ({
   email,
   handleLogin,
-  navigation
+  handleSubmit,
+  navigation,
+  ...rest,
 }) => (
   <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
@@ -43,18 +92,8 @@ const SignIn = ({
         </Row>
 
         <View style={margin.mt10}>
-          <Item style={StyleSheet.flatten(margin.mb10)}>
-            {
-              email ?
-              <Input placeholder="email" value={email} />
-              :
-              <Input placeholder="email" />
-            }
-          </Item>
-
-          <Item>
-            <Input placeholder="mot de passe" secureTextEntry />
-          </Item>
+          <Field component={renderInput} name="email" placeholder="Email" />
+          <Field component={renderInput} name="password" placeholder="Mot de passe" secureTextEntry />
 
           <Row style={[margin.mt25, margin.mb15, align.centerX]}>
             <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
@@ -63,7 +102,15 @@ const SignIn = ({
           </Row>
         </View>
 
-        <Button block onPress={handleLogin} style={StyleSheet.flatten(AppStyles.button)} >
+        <Button
+            block
+            disabled={rest.invalid}
+            onPress={handleSubmit(submit)}
+            style={rest.invalid
+              ? StyleSheet.flatten(AppStyles.buttonDisabled)
+              : StyleSheet.flatten(AppStyles.button)
+            }
+        >
           <Text style={AppStyles.buttonText}>Connexion</Text>
         </Button>
 
@@ -108,6 +155,7 @@ const styles = StyleSheet.create({
 SignIn.propTypes = {
   email: Proptypes.string,
   handleLogin: Proptypes.func.isRequired,
+  handleSubmit: Proptypes.func.isRequired,
   navigation: Proptypes.object.isRequired,
 };
 
@@ -115,4 +163,9 @@ SignIn.defaultProps = { email: '', };
 
 const mapDispatchToProps = (dispatch) => ({ handleLogin: () => dispatch(gotoHomeFromSignIn({email: "hi", password: "ok"})), });
 
-export default connect(null, mapDispatchToProps)(SignIn);
+SignIn = connect(null, mapDispatchToProps)(SignIn);
+
+export default reduxForm({
+  form: 'SignIn',
+  validate,
+})(SignIn);

@@ -9,6 +9,7 @@
     "expo": "17.0.0",
     "native-base": "^2.1.4",
     "prop-types": "^15.5.10",
+    "qs": "^6.4.0",
     "react": "16.0.0-alpha.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-17.0.0.tar.gz",
     "react-native-collapsible": "^0.8.0",
