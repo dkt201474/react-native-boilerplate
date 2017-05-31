@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form'
 
 /**
 * load all reducers
@@ -12,6 +13,7 @@ import auth from './auth/reducer';
 const rootReducer = combineReducers({
   auth,
   nav,
+  form: formReducer,
 });
 
 export default rootReducer;

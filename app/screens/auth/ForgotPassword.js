@@ -1,7 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { StyleSheet, Text, View, } from 'react-native';
-import { connect } from 'react-redux';
 import {
   Container,
   Content,
@@ -13,7 +12,10 @@ import {
   Button,
   Icon,
 } from 'native-base';
+import { Field, reduxForm, } from 'redux-form';
+import { connect } from 'react-redux';
 import Modal from 'react-native-modal';
+import isEmail from 'validator/lib/isEmail';
 
 /* App imports */
 import { resetPassword, closeForgotPasswordModal } from '../../reducers/auth/actions';
@@ -21,7 +23,47 @@ import { Metrics, Colors, } from '../../theme';
 import AppStyles, { block, align, inline, margin, } from '../../theme/AppStyles';
 import { AppStatusBar } from '../../lib/components';
 
-const ForgotPassword = ({ visibleModal, email, handleOnResetPassword, handleOnCloseModal }) => (
+
+/*
+* Function that will be call to ensure all field are properly setted
+*/
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.email) {
+    errors.email = 'Champ requis';
+  } else if (!isEmail(values.email)) {
+    errors.email = 'Email invalide';
+  }
+
+  return errors;
+};
+
+/*
+* Function that will be call if will want to get submitted
+*/
+const submit = (values, dispatch) => {
+  dispatch(resetPassword(values))
+}
+
+const renderInput = (field) => (
+  <View>
+    <Item
+        error={field.meta.error && field.meta.touched && true}
+        style={StyleSheet.flatten(margin.mb10)}
+    >
+      <Input
+          {...field.input}
+          onChangeText={field.input.onChange}
+          placeholder={field.placeholder}
+      />
+    </Item>
+
+    {field.meta.error && field.meta.touched && <Text style={{textAlign: 'right', color: Colors.error}}>{field.meta.error}</Text>}
+  </View>
+);
+
+let ForgotPassword = ({ handleSubmit, visibleModal, email, handleOnCloseModal }) => (
   <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
 
@@ -32,29 +74,22 @@ const ForgotPassword = ({ visibleModal, email, handleOnResetPassword, handleOnCl
         </Row>
 
         <Row style={align.centerX}>
-          <Text style={[inline.subtitle]}>
-            Entrez votre email pour reçevoir les instructions à suivre pour réinitialiser votre mot de passe
+          <Text style={[inline.subtitle, {marginHorizontal: 25}]}>
+            Entrez votre email pour réinitialiser votre mot de passe
           </Text>
         </Row>
 
         <View style={margin.mt10}>
-          <Item style={StyleSheet.flatten(margin.mb10)}>
-            {
-              email
-              ? <Input placeholder="email" value={email} />
-              : <Input placeholder="email" />
-            }
-          </Item>
+          <Field component={renderInput} name="email" placeholder="Email" />
         </View>
 
-        <Button block onPress={handleOnResetPassword} style={StyleSheet.flatten(AppStyles.button)} >
+        <Button block onPress={handleSubmit(submit)} style={StyleSheet.flatten(AppStyles.button)} >
           <Text style={AppStyles.buttonText}>Réinitialiser</Text>
         </Button>
       </Grid>
+    </Content>
 
-      <View
-          style={{ justifyContent: 'center', }}
-      >
+    <View style={{ justifyContent: 'center', }}>
           <Modal isVisible={visibleModal}>
             <View
                 style={{
@@ -85,8 +120,6 @@ const ForgotPassword = ({ visibleModal, email, handleOnResetPassword, handleOnCl
               </View>
             </Modal>
           </View>
-
-    </Content>
   </Container>
 );
 
@@ -97,24 +130,22 @@ const styles = StyleSheet.create({
   },
 });
 
-ForgotPassword.propTypes = {
-  email: Proptypes.string,
-  handleOnCloseModal: Proptypes.func,
-  handleOnResetPassword: Proptypes.func,
-  visibleModal: Proptypes.bool.isRequired,
-};
+ForgotPassword.propTypes = { handleSubmit: Proptypes.func.isRequired, };
 
 ForgotPassword.defaultProps = {
   email: '',
-  handleOnResetPassword: null,
-  handleOnCloseModal: null,
 };
 
 const mapStateToProps = (state) => ({ visibleModal: state.auth.visibleModal, });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleOnResetPassword: () => dispatch(resetPassword()),
+  handleOnResetPassword: (values) => dispatch(resetPassword(values)),
   handleOnCloseModal: () => dispatch(closeForgotPasswordModal()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);
+ForgotPassword = connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);
+
+export default reduxForm({
+  form: 'ForgotPassword',
+  validate,
+})(ForgotPassword);

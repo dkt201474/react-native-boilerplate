@@ -22,6 +22,8 @@ const nav = (state = initialState, action) => {
     return state;
 
   case RESET_PASSWORD:
+    console.log(action.payload);
+
     return {...state, visibleModal: true};
 
   case SHOW_MODAL:

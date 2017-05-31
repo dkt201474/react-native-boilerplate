@@ -2,6 +2,7 @@ import Expo from 'expo';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import devToolsEnhancer from 'remote-redux-devtools';
 
 import rootReducer from './reducers';
 import AppWithNavigationState from './navigators';
@@ -20,7 +21,6 @@ function cacheImages(images) {
 }
 
 class App extends Component {
-  /* The app store is created */
 
   state = {
     appIsReady: false,
@@ -31,7 +31,9 @@ class App extends Component {
   }
 
   render () {
-    const store = createStore(rootReducer);
+
+    /* The app store is created */
+    const store = createStore( rootReducer, devToolsEnhancer());
 
     if (!this.state.appIsReady) {
       return <Expo.AppLoading />;
