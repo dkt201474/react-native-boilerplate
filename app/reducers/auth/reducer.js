@@ -1,7 +1,5 @@
 /* Initial State */
-const initialState = {
-  visibleModal: false,
-};
+const initialState = { visibleModal: false, };
 
 /* Actions */
 import {

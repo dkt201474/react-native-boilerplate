@@ -40,10 +40,9 @@ const ForgotPassword = ({ visibleModal, email, handleOnResetPassword, handleOnCl
         <View style={margin.mt10}>
           <Item style={StyleSheet.flatten(margin.mb10)}>
             {
-              email ?
-              <Input placeholder="email" value={email} />
-              :
-              <Input placeholder="email" />
+              email
+              ? <Input placeholder="email" value={email} />
+              : <Input placeholder="email" />
             }
           </Item>
         </View>
