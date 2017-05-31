@@ -48,7 +48,7 @@ const validate = (values) => {
 /*
 * Function that will be call if form get submitting
 */
-const submit = (values, dispatch) => dispatch(gotoHomeFromSignIn(normalizeEmail(values.email)));
+const submit = (values, dispatch) => dispatch(gotoHomeFromSignIn(values));
 
 const renderInput = (field) => (
   <View>

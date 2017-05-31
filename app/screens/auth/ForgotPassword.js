@@ -17,13 +17,13 @@ import { connect } from 'react-redux';
 import Modal from 'react-native-modal';
 import isEmail from 'validator/lib/isEmail';
 import normalizeEmail from 'validator/lib/normalizeEmail';
-import {parse} from 'qs';
+import {stringify} from 'qs';
 
 /* App imports */
 import { resetPassword, closeForgotPasswordModal } from '../../reducers/auth/actions';
 import { Metrics, Colors, } from '../../theme';
 import AppStyles, { block, align, inline, margin, } from '../../theme/AppStyles';
-import { AppStatusBar, AppInput, } from '../../lib/components';
+import { AppStatusBar, } from '../../lib/components';
 
 /*
 * Function that will be call to ensure all field are properly setted
@@ -43,7 +43,7 @@ const validate = (values) => {
 /*
 * Function that will be call if form get submitting
 */
-const submit = (values, dispatch) => dispatch(resetPassword(normalizeEmail(parse(values.email))));
+const submit = (values, dispatch) => dispatch(resetPassword(normalizeEmail(stringify(values.email))));
 
 const renderInput = (field) => (
   <View>
