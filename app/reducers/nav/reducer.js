@@ -1,12 +1,20 @@
-import initialNavState from './initialState';
 import DefaultNavigatorTab from '../../navigators/DefaultNavigatorTab';
 
-// Actions
+/*
+* -->Initial State
+*
+* 1. retrieve the action needed to go to login screen
+* 2. trigger the reducer with that action ==> retrieve the state return by dispatching 1.
+*/
+const gotoSignInStack = DefaultNavigatorTab.router.getActionForPathAndParams('SignInStack');
+const initialNavState = DefaultNavigatorTab.router.getStateForAction(gotoSignInStack);
+
+/* Actions */
 import {
   GOTO_HOME_FROM_SIGNIN,
-  RESET_PASSWORD,
   GOTO_HOME_FROM_SIGNUP_VALIDATION,
   GOTO_SIGNUP_VALIDATION,
+  CLOSE_FORGOT_PASSWORD_MODAL,
   NavigationActions,
 } from '../../lib/constants';
 
@@ -29,9 +37,7 @@ const nav = (state = initialNavState, action) => {
       NavigationActions.navigate({ routeName: 'SignIn'}),
       state
     );
-  case RESET_PASSWORD:
-    console.log(action.payload);
-
+  case CLOSE_FORGOT_PASSWORD_MODAL:
     return DefaultNavigatorTab.router.getStateForAction(
       NavigationActions.navigate({ routeName: 'SignIn'}),
       state
