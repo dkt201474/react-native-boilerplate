@@ -8,9 +8,6 @@ import {
   Grid,
   Row,
   H1,
-  Input,
-  Item,
-  Button,
   Icon,
 } from 'native-base';
 import { Field, reduxForm, } from 'redux-form';
@@ -21,8 +18,8 @@ import normalizeEmail from 'validator/lib/normalizeEmail';
 // App imports
 import { gotoHomeFromSignIn, } from '../../reducers/auth/actions';
 import { Images, Metrics, Colors, } from '../../theme';
-import AppStyles, { margin, block, colors, align, inline, } from '../../theme/AppStyles';
-import { AppStatusBar } from '../../lib/components';
+import { margin, block, colors, align, inline, } from '../../theme/AppStyles';
+import { AppStatusBar, AppInput, AppButton, } from '../../lib/components';
 
 /*
 * Function that will be call to ensure all field are properly setted
@@ -48,29 +45,15 @@ const validate = (values) => {
 /*
 * Function that will be call if form get submitting
 */
-const submit = (values, dispatch) => dispatch(gotoHomeFromSignIn(values));
+const submit = (values, dispatch) => {
+  values.email = normalizeEmail(values.email);
 
-const renderInput = (field) => (
-  <View>
-    <Item
-        error={field.meta.error && field.meta.touched && true}
-        style={StyleSheet.flatten(margin.mb10)}
-    >
-      <Input
-          {...field.input}
-          onChangeText={field.input.onChange}
-          placeholder={field.placeholder}
-          secureTextEntry={field.secureTextEntry && true}
-      />
-    </Item>
+  return dispatch(gotoHomeFromSignIn({email: values.email, password: values.password}));
+};
 
-    {field.meta.error && field.meta.touched && <Text style={{textAlign: 'right', color: Colors.error}}>{field.meta.error}</Text>}
-  </View>
-);
+const renderInput = (field) => AppInput(field);
 
 let SignIn = ({
-  email,
-  handleLogin,
   handleSubmit,
   navigation,
   ...rest,
@@ -103,17 +86,12 @@ let SignIn = ({
           </Row>
         </View>
 
-        <Button
-            block
-            disabled={rest.invalid}
-            onPress={handleSubmit(submit)}
-            style={rest.invalid
-              ? StyleSheet.flatten(AppStyles.buttonDisabled)
-              : StyleSheet.flatten(AppStyles.button)
-            }
-        >
-          <Text style={AppStyles.buttonText}>Connexion</Text>
-        </Button>
+        <AppButton
+            doSubmit={submit}
+            handleSubmit={handleSubmit(submit)}
+            invalid={rest.invalid}
+            title="Connexion"
+        />
 
         <TouchableOpacity onPress={() => navigation.navigate('SignUpForm')} style={margin.mt25}>
           <Row style={align.centerX}>
@@ -128,7 +106,6 @@ let SignIn = ({
             </View>
           </Row>
       </TouchableOpacity>
-
       </Grid>
     </Content>
   </Container>
@@ -162,7 +139,7 @@ SignIn.propTypes = {
 
 SignIn.defaultProps = { email: '', };
 
-const mapDispatchToProps = (dispatch) => ({ handleLogin: () => dispatch(gotoHomeFromSignIn({email: "hi", password: "ok"})), });
+const mapDispatchToProps = (dispatch) => ({ handleLogin: () => dispatch(gotoHomeFromSignIn({})), });
 
 SignIn = connect(null, mapDispatchToProps)(SignIn);
 

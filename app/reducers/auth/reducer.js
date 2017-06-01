@@ -18,7 +18,7 @@ import {
 const auth = (state = initialState, action) => {
   switch (action.type) {
   case GOTO_HOME_FROM_SIGNIN:
-    return state;
+    return {...state, email: action.payload.email};
 
   case GOTO_SIGNUP_VALIDATION:
   case GOTO_HOME_FROM_SIGNUP_VALIDATION:

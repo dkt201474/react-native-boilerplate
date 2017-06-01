@@ -1,5 +1,5 @@
 import React from 'react';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, } from 'react-native';
 import {
   Container,
@@ -7,8 +7,6 @@ import {
   Grid,
   Row,
   H1,
-  Input,
-  Item,
   Button,
   Icon,
 } from 'native-base';
@@ -23,7 +21,7 @@ import {stringify} from 'qs';
 import { resetPassword, closeForgotPasswordModal } from '../../reducers/auth/actions';
 import { Metrics, Colors, } from '../../theme';
 import AppStyles, { block, align, inline, margin, } from '../../theme/AppStyles';
-import { AppStatusBar, } from '../../lib/components';
+import { AppStatusBar, AppInput, AppButton, } from '../../lib/components';
 
 /*
 * Function that will be call to ensure all field are properly setted
@@ -45,24 +43,9 @@ const validate = (values) => {
 */
 const submit = (values, dispatch) => dispatch(resetPassword(normalizeEmail(stringify(values.email))));
 
-const renderInput = (field) => (
-  <View>
-    <Item
-        error={field.meta.error && field.meta.touched && true}
-        style={StyleSheet.flatten(margin.mb10)}
-    >
-      <Input
-          {...field.input}
-          onChangeText={field.input.onChange}
-          placeholder={field.placeholder}
-      />
-    </Item>
+const renderInput = (field) => AppInput(field);
 
-    {field.meta.error && field.meta.touched && <Text style={{textAlign: 'right', color: Colors.error}}>{field.meta.error}</Text>}
-  </View>
-);
-
-let ForgotPassword = ({ handleSubmit, visibleModal, email, handleOnCloseModal, ...rest }) => (
+let ForgotPassword = ({ handleSubmit, visibleModal, handleOnCloseModal, ...rest }) => (
   <Container style={StyleSheet.flatten(block.containerBg)}>
     <AppStatusBar />
 
@@ -82,17 +65,12 @@ let ForgotPassword = ({ handleSubmit, visibleModal, email, handleOnCloseModal, .
           <Field component={renderInput} name="email" placeholder="Email" />
         </View>
 
-        <Button
-            block
-            disabled={rest.invalid}
-            onPress={handleSubmit(submit)}
-            style={rest.invalid
-              ? StyleSheet.flatten(AppStyles.buttonDisabled)
-              : StyleSheet.flatten(AppStyles.button)
-            }
-        >
-          <Text style={AppStyles.buttonText}>Réinitialiser</Text>
-        </Button>
+        <AppButton
+            doSubmit={submit}
+            handleSubmit={handleSubmit(submit)}
+            invalid={rest.invalid}
+            title="Réinitialiser"
+        />
       </Grid>
     </Content>
 
@@ -123,10 +101,10 @@ const styles = StyleSheet.create({
   },
 });
 
-ForgotPassword.propTypes = { handleSubmit: Proptypes.func.isRequired, };
-
-ForgotPassword.defaultProps = {
-  email: '',
+ForgotPassword.propTypes = {
+  handleOnCloseModal: PropTypes.func.isRequired, 
+  handleSubmit: PropTypes.func.isRequired,
+  visibleModal: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({ visibleModal: state.auth.visibleModal, });
