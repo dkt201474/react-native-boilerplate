@@ -13,6 +13,7 @@ import {
 import { Field, reduxForm, } from 'redux-form';
 import isEmail from 'validator/lib/isEmail';
 import isLength from 'validator/lib/isLength';
+import trim from 'validator/lib/trim';
 import normalizeEmail from 'validator/lib/normalizeEmail';
 
 // App imports
@@ -37,6 +38,8 @@ const validate = (values) => {
     errors.password = 'Champ requis';
   } else if (!isLength(values.password, {min: 8})) {
     errors.password = 'Au moins 8 caractères requis';
+  } else if (!trim(values.password) && true) {
+    errors.password = 'Mot de passe invalide';
   }
 
   return errors;
@@ -45,11 +48,14 @@ const validate = (values) => {
 /*
 * Function that will be call if form get submitting
 */
-const submit = (values, dispatch) => {
-  values.email = normalizeEmail(values.email);
-
-  return dispatch(gotoHomeFromSignIn({email: values.email, password: values.password}));
-};
+const submit = (values, dispatch) => dispatch(
+  gotoHomeFromSignIn(
+    {
+      email: normalizeEmail(values.email),
+      password: trim(values.password)
+    }
+  )
+);
 
 const renderInput = (field) => AppInput(field);
 
@@ -76,7 +82,7 @@ let SignIn = ({
         </Row>
 
         <View style={margin.mt10}>
-          <Field component={renderInput} name="email" placeholder="Email" />
+          <Field component={renderInput} keyboardType="email-address" name="email" placeholder="Email" />
           <Field component={renderInput} name="password" placeholder="Mot de passe" secureTextEntry />
 
           <Row style={[margin.mt25, margin.mb15, align.centerX]}>
@@ -87,7 +93,6 @@ let SignIn = ({
         </View>
 
         <AppButton
-            doSubmit={submit}
             handleSubmit={handleSubmit(submit)}
             invalid={rest.invalid}
             title="Connexion"

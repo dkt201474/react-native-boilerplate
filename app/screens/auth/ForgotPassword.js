@@ -62,11 +62,10 @@ let ForgotPassword = ({ handleSubmit, visibleModal, handleOnCloseModal, ...rest 
         </Row>
 
         <View style={margin.mt10}>
-          <Field component={renderInput} name="email" placeholder="Email" />
+          <Field component={renderInput} keyboardType="email-address" name="email" placeholder="Email" />
         </View>
 
         <AppButton
-            doSubmit={submit}
             handleSubmit={handleSubmit(submit)}
             invalid={rest.invalid}
             title="Réinitialiser"
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
 });
 
 ForgotPassword.propTypes = {
-  handleOnCloseModal: PropTypes.func.isRequired, 
+  handleOnCloseModal: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   visibleModal: PropTypes.bool.isRequired,
 };

@@ -12,8 +12,9 @@ const AppInput = (field) => (
     >
       <Input
           {...field.input}
-          onChangeText={field.input.onChange}
-          placeholder={field.placeholder}
+          keyboardType={'' || field.keyboardType}
+          onChangeText={() => field.input.onChange}
+          placeholder={'' || field.placeholder}
           secureTextEntry={field.secureTextEntry && true}
       />
     </Item>

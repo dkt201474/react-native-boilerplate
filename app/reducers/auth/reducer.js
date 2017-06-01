@@ -2,6 +2,8 @@
 const initialState = {
   visibleModal: false,
   email: '',
+  password: '',
+  phoneNumber: '',
 };
 
 /* Actions */
@@ -21,12 +23,18 @@ const auth = (state = initialState, action) => {
     return {...state, email: action.payload.email};
 
   case GOTO_SIGNUP_VALIDATION:
+    return {
+      ...state,
+      visibleModal: false,
+      email: action.payload.email,
+      password: action.payload.password,
+      phoneNumber: action.payload.phoneNumber,
+    };
+
   case GOTO_HOME_FROM_SIGNUP_VALIDATION:
     return state;
 
   case RESET_PASSWORD:
-    console.log(action.payload);
-
     return {...state, visibleModal: true};
 
   case SHOW_MODAL:

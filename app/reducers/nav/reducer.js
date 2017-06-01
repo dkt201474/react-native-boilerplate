@@ -21,15 +21,13 @@ import {
 const nav = (state = initialNavState, action) => {
   switch (action.type) {
   case GOTO_HOME_FROM_SIGNIN:
-    console.log(action.payload);
-
     return DefaultNavigatorTab.router.getStateForAction(
       NavigationActions.navigate({ routeName: 'SignIn'}),
       state
     );
   case GOTO_SIGNUP_VALIDATION:
     return DefaultNavigatorTab.router.getStateForAction(
-      NavigationActions.navigate({ routeName: 'SignIn'}),
+      NavigationActions.navigate({ routeName: 'SignUpValidation'}),
       state
     );
   case GOTO_HOME_FROM_SIGNUP_VALIDATION:
