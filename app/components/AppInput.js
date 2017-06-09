@@ -1,14 +1,15 @@
 import React from 'react';
-import { Text, } from 'react-native';
-import { View, Item, Input, } from 'native-base';
+import { Text, View } from 'react-native';
+import { Item, Input } from 'native-base';
 
-import { Colors } from '../theme';
+/* App imports */
+import { info } from '../theme/Colors';
 
-const AppInput = (field) => (
-  <View>
+const AppInput = (field) =>
+  (<View>
     <Item
         error={field.meta.error && field.meta.touched && true}
-        style={{marginBottom: 10}}
+        style={{ marginBottom: 10 }}
     >
       <Input
           {...field.input}
@@ -19,8 +20,11 @@ const AppInput = (field) => (
       />
     </Item>
 
-    {field.meta.error && field.meta.touched && <Text style={{textAlign: 'right', color: Colors.error}}>{field.meta.error}</Text>}
-  </View>
-);
+    {field.meta.error &&
+      field.meta.touched &&
+      <Text style={{ textAlign: 'right', color: info.error }}>
+        {field.meta.error}
+      </Text>}
+  </View>);
 
 export default AppInput;

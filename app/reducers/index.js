@@ -1,19 +1,29 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form'
+import { reducer as form } from 'redux-form';
 
-/**
-* load all reducers
-*/
-import nav from './nav/reducer';
-import auth from './auth/reducer';
+/* load all reducers */
+import ux from './ux';
+import nav from './nav';
+import session from './session';
 
-/**
-* rootReducer is a wrapper for all reducers
+/*
+* --> rootReducer
+*
+*   - the reducer that will be created with the store
+*   - Contain all state of the whole application
+*   - state shape will be:
+*       {
+*         ux: {...},
+*         nav: {...},
+*         form: {...},
+*         ...
+*       }
 */
 const rootReducer = combineReducers({
-  auth,
+  ux,
   nav,
-  form: formReducer,
+  form,
+  session,
 });
 
 export default rootReducer;

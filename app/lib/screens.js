@@ -1,23 +1,25 @@
 // Screens
 import SignIn from '../screens/auth/SignIn';
-import SignUpForm from '../screens/auth/SignUpForm';
+import SignUp from '../screens/auth/SignUp';
 import SignUpValidation from '../screens/auth/SignUpValidation';
-import ForgotPassword from '../screens/auth/ForgotPassword';
+import ResetPassword from '../screens/auth/ResetPassword';
 import FindUs from '../screens/defaultTab/FindUs';
 import ContactUs from '../screens/defaultTab/ContactUs';
 import DefaultMenu from '../screens/defaultTab/DefaultMenu';
 import Services from '../screens/defaultTab/Services';
+import Home from '../screens/home/Home';
 
 // exports
 export {
   // Screens
-    // auth
+  // auth
   SignIn,
-  SignUpForm,
+  SignUp,
   SignUpValidation,
-  ForgotPassword,
+  ResetPassword,
   FindUs,
   ContactUs,
   DefaultMenu,
   Services,
+  Home
 };

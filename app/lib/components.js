@@ -1,15 +1,9 @@
 // components
-import AppStatusBar from '../components/AppStatusBar';
-import AppItem from '../components/AppItem';
 import AppHeader from '../components/AppHeader';
 import AppInput from '../components/AppInput';
 import AppButton from '../components/AppButton';
+import AppModal from '../components/AppModal';
+import InfoModal from '../components/InfoModal';
 
 // exports
-export {
-  AppStatusBar,
-  AppItem,
-  AppHeader,
-  AppInput,
-  AppButton,
-};
+export { AppHeader, AppInput, AppButton, AppModal, InfoModal };

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addNavigationHelpers, } from 'react-navigation';
+import { addNavigationHelpers } from 'react-navigation';
 
 /* Navigator imports */
-import DefaultNavigatorTab from './DefaultNavigatorTab';
+import Root from './Root';
 
 /*
     - The root navigator aware of redux is created
@@ -12,16 +12,15 @@ import DefaultNavigatorTab from './DefaultNavigatorTab';
     - Now every child component have navigation prop and
     - can trigger action that return a new nav object (Ex. change screen)
 */
-const AppWithNavigationState = ({ dispatch, nav }) => (
-  <DefaultNavigatorTab navigation={addNavigationHelpers({ dispatch, state: nav })} />
-);
+const AppWithNavigationState = ({ dispatch, nav }) =>
+  <Root navigation={addNavigationHelpers({ dispatch, state: nav })} />;
 
 AppWithNavigationState.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.object.isRequired,
+  nav: PropTypes.object.isRequired
 };
 
 /* Binding to the store */
-const mapStateToProps = (state) => ({ nav: state.nav, });
+const mapStateToProps = (state) => ({ nav: state.nav });
 
 export default connect(mapStateToProps)(AppWithNavigationState);

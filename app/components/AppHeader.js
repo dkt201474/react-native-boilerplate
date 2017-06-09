@@ -1,17 +1,32 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import { Text } from 'react-native';
-import { Header, Body } from 'native-base';
-import { colors, bg } from '../theme/AppStyles';
+import { Text, View } from 'react-native';
 
-const AppHeader = ({title}) => (
-  <Header style={bg.gray10} >
-    <Body>
-      <Text style={[colors.white, {fontWeight: 'bold', fontSize: 17}]}>{title}</Text>
-    </Body>
-  </Header>
-);
+/* App imports */
+import { gray } from '../theme/Colors';
 
-AppHeader.propTypes = { title: Proptypes.string.isRequired, };
+const AppHeader = ({ title }) =>
+  (<View
+      style={{
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        paddingTop: 20,
+        paddingBottom: 10,
+        alignItems: 'center'
+      }}
+  >
+    <Text
+        style={{
+          color: gray.g8,
+          textAlign: 'center',
+          fontWeight: 'bold',
+          fontSize: 17
+        }}
+    >
+      {title}
+    </Text>
+  </View>);
+
+AppHeader.propTypes = { title: Proptypes.string.isRequired };
 
 export default AppHeader;

@@ -1,64 +1,55 @@
 import React from 'react';
-import Proptypes from 'prop-types';
-import { StyleSheet, Text, View, } from 'react-native';
-import {
-  Container,
-  Grid,
-  Row,
-  H1,
-  Input,
-  Item,
-  Button,
-} from 'native-base';
+import PropTypes from 'prop-types';
+import { Container, Content, Text, View } from 'react-native';
+import { Row, Grid } from 'native-base';
+import { Field, reduxForm } from 'redux-form';
 
-import { Metrics, } from '../../theme';
-import AppStyles, { block, align, inline, margin, } from '../../theme/AppStyles';
-import { AppStatusBar } from '../../lib/components';
+/* App imports */
+import { Metrics } from '../../theme';
+import { container, text, align } from '../../theme/AppStyles';
+import { AppInput, AppButton } from '../../lib/components';
+import { SignUpValidation as validate } from '../../lib/validate';
 
-const SignUpValidation = ({ confirmationCode, handleOnPress }) => (
-  <Container style={StyleSheet.flatten(block.containerBg)}>
-    <AppStatusBar />
+const renderInput = (field) => AppInput(field);
 
-    <Grid style={styles.formWrapper}>
-      <Row style={align.centerX}>
-        <H1 style={StyleSheet.flatten(styles.titleText)}>Confirmation</H1>
-      </Row>
+const SignUpValidation = ({ handleSubmit, invalid }) =>
+  (<Container style={container.default}>
+    <Content>
+      <Grid style={[container.white, { marginTop: Metrics.height * 0.2 }]}>
+        <Row style={align.centerX}>
+          <Text style={text.title}>Confirmation</Text>
+        </Row>
 
-      <Row style={align.centerX}>
-        <Text style={StyleSheet.flatten(inline.subtitle)}>Confirmez votre inscription</Text>
-      </Row>
+        <Row style={align.centerX}>
+          <Text style={text.subtitle}>Entrez le code envoyé par SMS</Text>
+        </Row>
 
-      <View style={margin.mt10}>
-        <Item style={StyleSheet.flatten(margin.mb10)}>
-          <Input placeholder="X X X X" value={confirmationCode} />
-        </Item>
-      </View>
+        <View style={{ marginTop: 10 }}>
+          <Field
+              component={renderInput}
+              keyboardType="number-pad"
+              name="confirmationCode"
+              placeholder="X X X X"
+          />
+        </View>
 
-      <Button block onPress={handleOnPress} style={StyleSheet.flatten(AppStyles.button)} >
-        <Text style={AppStyles.buttonText}>Confirmer</Text>
-      </Button>
-    </Grid>
-  </Container>
-);
-
-const styles = StyleSheet.create({
-  formWrapper: {
-    ...block.whiteContainer,
-    height: Metrics.height * 0.5,
-    marginTop: Metrics.height * 0.25,
-    marginBottom: Metrics.height * 0.25,
-  },
-});
+        <AppButton
+            handleSubmit={handleSubmit((values) => console.log(values))}
+            invalid={invalid}
+            title="Confirmer"
+        />
+      </Grid>
+    </Content>
+  </Container>);
 
 SignUpValidation.propTypes = {
-  confirmationCode: Proptypes.string,
-  handleOnPress: Proptypes.func,
+  handleSubmit: PropTypes.func.isRequired,
+  invalid: PropTypes.bool.isRequired
 };
 
-SignUpValidation.defaultProps = {
-  confirmationCode: '',
-  navigation: null,
-  handleOnPress: null,
-};
+SignUpValidation.defaultProps = { confirmationCode: '' };
 
-export default SignUpValidation;
+export default reduxForm({
+  form: 'CreateAccountValidation',
+  validate
+})(SignUpValidation);

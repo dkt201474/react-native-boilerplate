@@ -1,41 +1,46 @@
-import AppStyles from '../theme/AppStyles';
+import { header } from '../theme/AppStyles';
 import { StackNavigator } from 'react-navigation';
 
 import {
   SignIn,
-  SignUpForm,
+  SignUp,
   SignUpValidation,
-  ForgotPassword,
+  Home,
+  ResetPassword
 } from '../lib/screens';
 
 export default StackNavigator({
   SignIn: {
     screen: SignIn,
-    navigationOptions: () => ({ header: false, }),
+    navigationOptions: () => ({ header: false })
   },
-  SignUpForm: {
-    screen: SignUpForm,
+  Home: {
+    screen: Home,
+    navigationOptions: () => ({ header: false })
+  },
+  SignUp: {
+    screen: SignUp,
     navigationOptions: () => ({
-      ...AppStyles.header,
+      ...header,
       headerTitle: 'Inscription',
-      tabBarVisible: false,
-    }),
+      tabBarVisible: false
+    })
   },
-  ForgotPassword: {
-    screen: ForgotPassword,
+  ResetPassword: {
+    screen: ResetPassword,
     navigationOptions: () => ({
-      ...AppStyles.header,
+      ...header,
       headerTitle: 'Mot de passe oublié',
-      tabBarVisible: false,
-    }),
+      tabBarVisible: false
+    })
   },
   SignUpValidation: {
     screen: SignUpValidation,
     navigationOptions: () => ({
-      ...AppStyles.header,
+      ...header,
       headerLeft: null,
       tabBarVisible: false,
-      headerTitle: 'Confirmation',
-    }),
-  },
+      headerTitle: 'Confirmation'
+    })
+  }
 });

@@ -1,36 +1,55 @@
 import React from 'react';
-import { StyleSheet, Text, } from 'react-native';
-import {
-  Container,
-  Content,
-  Grid,
-  Row,
-  Header,
-  Body,
-} from 'native-base';
+import { StyleSheet, Text } from 'react-native';
+import { Row, Container, Content } from 'native-base';
 
-import AppStyles, { bg, colors, block, inline, align, margin } from '../../theme/AppStyles';
-import { AppStatusBar, AppItem, } from '../../lib/components';
+import { container } from '../../theme/AppStyles';
+import { gray } from '../../theme/Colors';
+import { AppHeader } from '../../lib/components';
 
-const FindUs = () => (
-  <Container style={StyleSheet.flatten(block.containerBg)}>
-    <AppStatusBar />
-    <Header style={bg.gray10} >
-      <Body style={align.centerX}>
-        <Text style={[colors.white, {fontWeight: 'bold', fontSize: 17}]}>Nous trouver</Text>
-      </Body>
-    </Header>
+const FindUs = () =>
+  (<Container style={container.default}>
+    <AppHeader title="Nous trouver" />
 
-    <Content style={margin.mt15}>
-      <Grid style={block.whiteContainer}>
-        <Row style={AppStyles.separator}><Text style={inline.textBold}>Bénin</Text></Row>
-        <Row style={AppStyles.separator}><Text style={inline.textBold}>Cotonou</Text></Row>
+    <Content style={container.whiteBox}>
+      <Row style={styles.separator}>
+        <Text style={styles.separatorText}>Bénin</Text>
+      </Row>
 
-        <AppItem body={{ text: 'Fidjrossè', }} rowStyle={[AppStyles.item, margin.mh5]} />
-        <AppItem body={{ text: 'Godomey', }} rowStyle={[AppStyles.lastItem, margin.mh5]} />
-      </Grid>
+      <Row style={{ marginBottom: 10 }}>
+        <Text style={styles.separatorText}>Cotonou</Text>
+      </Row>
+
+      <Row style={styles.item}>
+        <Text style={styles.itemText}>Fidjrossè</Text>
+      </Row>
+      <Row style={styles.item}>
+        <Text style={styles.itemText}>Zongo II</Text>
+      </Row>
+      <Row style={styles.itemLast}>
+        <Text style={styles.itemText}>Quartier Jack</Text>
+      </Row>
+
     </Content>
-  </Container>
-);
+
+  </Container>);
+
+const styles = StyleSheet.create({
+  separator: { marginBottom: 10 },
+  separatorText: {
+    fontWeight: 'bold',
+    color: gray.g9
+  },
+  item: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: gray.g5,
+    paddingVertical: 10,
+    marginHorizontal: 15
+  },
+  itemLast: {
+    paddingVertical: 10,
+    marginHorizontal: 15
+  },
+  itemText: { color: gray.g8 }
+});
 
 export default FindUs;
