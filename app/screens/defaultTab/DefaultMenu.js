@@ -5,21 +5,36 @@ import { Container, Content, Row } from 'native-base';
 import { connect } from 'react-redux';
 
 /* App imports */
-import { AppHeader, InfoModal } from '../../lib/components';
+import {
+  AppHeader,
+  AppInfoModal,
+  AppPrivatePolicy
+} from '../../lib/components';
 import { container } from '../../theme/AppStyles';
 import { gray, colors } from '../../theme/Colors';
 
 /* actions  */
 import { ux } from '../../reducers/actions';
 
-const TITLE = { about: 'À propos de EnanlyPay' };
+const TITLE = {
+  about: 'À propos de EnanlyPay',
+  privatePolicy: 'Politique de confidentialité'
+};
 
 const CONTENT = {
   about:
     'EnanlyPay est un produit commercial de la société Enanlygroup qui fournit un moyen pour traiter et gérer les transactions en ligne. En cours de développement et d’essai, la première version du système de paiement EnanlyPay sera lancée officiellement en 2017. \n\nEnanlyPay est un système de paiement réfléchi pour l’Afrique qui utilise la base de consommateurs de ses partenaires potentiels que sont: MTN, Etisalat, Orange, Millicom, BhartiAirtel, STC, Zainet, Ooredoo, Vodafon.\n\nEnanlyPay a plusieurs produits pour plusieurs cibles: les consommateurs, les PME, Grandes Entreprises et le e-commerce. Il est disponible sur portable, Tablette et Ordinateur respectivement en version androïd, iOS et Windows'
 };
 
-const DefaultMenu = ({ openAbout, closeModal, visibleModal }) =>
+const DefaultMenu = ({
+  openAbout,
+  openHelp,
+  openFares,
+  openUserContract,
+  openPrivatePolicy,
+  closeModal,
+  visibleModal
+}) =>
   (<Container style={container.default}>
     <AppHeader title="Menu" />
 
@@ -28,30 +43,37 @@ const DefaultMenu = ({ openAbout, closeModal, visibleModal }) =>
         <Row style={styles.item}><Text>À propos</Text></Row>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={openHelp}>
         <Row style={styles.item}><Text>Aide</Text></Row>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+        <Row style={styles.item}><Text>Condition d&apos;utilisation</Text></Row>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={openPrivatePolicy}>
+        <Row style={styles.item}><Text>Politique de confidentialité</Text></Row>
       </TouchableOpacity>
 
       <TouchableOpacity>
         <Row style={styles.item}><Text>Tarif</Text></Row>
       </TouchableOpacity>
-
-      <TouchableOpacity>
-        <Row style={styles.item}><Text>Condition d'utilisation</Text></Row>
-      </TouchableOpacity>
-
-      <TouchableOpacity>
-        <Row style={styles.item}><Text>Politique de confidentialité</Text></Row>
-      </TouchableOpacity>
     </Content>
 
-    <InfoModal
+    <AppInfoModal
         closeModal={closeModal}
         content={CONTENT.about}
-        openAbout={openAbout}
         title={TITLE.about}
-        visibleModal={visibleModal}
+        visibleModal={visibleModal === 'about'}
     />
+
+    <AppInfoModal
+        closeModal={closeModal}
+        content={AppPrivatePolicy}
+        title="Politique de confidentialité"
+        visibleModal={visibleModal === 'privatePolicy'}
+    />
+
   </Container>);
 
 const styles = StyleSheet.create({
@@ -72,13 +94,15 @@ const styles = StyleSheet.create({
 DefaultMenu.propTypes = {
   closeModal: PropTypes.func.isRequired,
   openAbout: PropTypes.func.isRequired,
-  visibleModal: PropTypes.bool.isRequired
+  visibleModal: PropTypes.any.isRequired
 };
 
 export default connect(
   (state) => ({ visibleModal: state.ux.visibleModal }),
   (dispatch) => ({
     closeModal: () => dispatch(ux.closeModal()),
-    openAbout: () => dispatch(ux.openAbout('about'))
+    openAbout: () => dispatch(ux.openAbout('about')),
+    openPrivatePolicy: () => dispatch(ux.openPrivatePolicy('privatePolicy')),
+    openHelp: () => dispatch(ux.openHelp('help'))
   })
 )(DefaultMenu);

@@ -8,7 +8,7 @@ import { Icon } from 'native-base';
 import { colors, gray } from '../theme/Colors';
 import { text } from '../theme/AppStyles';
 
-const InfoModal = ({ visibleModal, title, content, closeModal }) =>
+const AppInfoModal = ({ visibleModal, title, content, closeModal }) =>
   (<View style={{ justifyContent: 'center' }}>
     <Modal isVisible={visibleModal}>
 
@@ -37,18 +37,22 @@ const InfoModal = ({ visibleModal, title, content, closeModal }) =>
       >
         <Text style={[text.title, { textAlign: 'left' }]}>{title}</Text>
 
-        <Text style={{ textAlign: 'left', color: gray.g7, paddingBottom: 20 }}>
-          {content}
-        </Text>
+        {typeof content === 'string'
+          ? <Text
+              style={{ textAlign: 'left', color: gray.g8, paddingBottom: 20 }}
+            >
+              {content}
+            </Text>
+          : content}
       </ScrollView>
     </Modal>
   </View>);
 
-InfoModal.propTypes = {
+AppInfoModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   content: PropTypes.any.isRequired,
   title: PropTypes.string.isRequired,
   visibleModal: PropTypes.bool.isRequired
 };
 
-export default InfoModal;
+export default AppInfoModal;
