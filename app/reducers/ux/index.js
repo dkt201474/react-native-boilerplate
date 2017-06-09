@@ -30,6 +30,12 @@ const ux = (state = initialState, action) => {
       visibleModal: true
     };
 
+  case uxType.OPEN_ABOUT:
+    return {
+      ...state,
+      visibleModal: 'about' && true
+    };
+
   default:
     return state;
   }

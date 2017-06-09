@@ -19,12 +19,12 @@ const CONTENT = {
     'EnanlyPay est un produit commercial de la société Enanlygroup qui fournit un moyen pour traiter et gérer les transactions en ligne. En cours de développement et d’essai, la première version du système de paiement EnanlyPay sera lancée officiellement en 2017. \n\nEnanlyPay est un système de paiement réfléchi pour l’Afrique qui utilise la base de consommateurs de ses partenaires potentiels que sont: MTN, Etisalat, Orange, Millicom, BhartiAirtel, STC, Zainet, Ooredoo, Vodafon.\n\nEnanlyPay a plusieurs produits pour plusieurs cibles: les consommateurs, les PME, Grandes Entreprises et le e-commerce. Il est disponible sur portable, Tablette et Ordinateur respectivement en version androïd, iOS et Windows'
 };
 
-const DefaultMenu = ({ openModal, closeModal, visibleModal }) =>
+const DefaultMenu = ({ openAbout, closeModal, visibleModal }) =>
   (<Container style={container.default}>
     <AppHeader title="Menu" />
 
     <Content style={StyleSheet.flatten(styles.menuWrapper)}>
-      <TouchableOpacity onPress={openModal}>
+      <TouchableOpacity onPress={openAbout}>
         <Row style={styles.item}><Text>À propos</Text></Row>
       </TouchableOpacity>
 
@@ -48,7 +48,7 @@ const DefaultMenu = ({ openModal, closeModal, visibleModal }) =>
     <InfoModal
         closeModal={closeModal}
         content={CONTENT.about}
-        openModal={openModal}
+        openAbout={openAbout}
         title={TITLE.about}
         visibleModal={visibleModal}
     />
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 
 DefaultMenu.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
+  openAbout: PropTypes.func.isRequired,
   visibleModal: PropTypes.bool.isRequired
 };
 
@@ -79,6 +79,6 @@ export default connect(
   (state) => ({ visibleModal: state.ux.visibleModal }),
   (dispatch) => ({
     closeModal: () => dispatch(ux.closeModal()),
-    openModal: () => dispatch(ux.openModal())
+    openAbout: () => dispatch(ux.openAbout('about'))
   })
 )(DefaultMenu);

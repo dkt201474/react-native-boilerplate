@@ -10,6 +10,7 @@ import { NavigationActions } from 'react-navigation';
 
 export const ux = {
   OPEN_MODAL: 'ep/ux/OPEN_MODAL',
+  OPEN_ABOUT: 'ep/ux/OPEN_ABOUT',
   CLOSE_MODAL: 'ep/ux/CLOSE_MODAL'
 };
 
