@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Container, Content, Row } from 'native-base';
+import { Container, Content, Row, Col, Icon } from 'native-base';
 import { connect } from 'react-redux';
 
 /* App imports */
@@ -62,6 +62,18 @@ const DefaultMenu = ({
       <TouchableOpacity onPress={openFares}>
         <Row style={styles.item}><Text>Tarif</Text></Row>
       </TouchableOpacity>
+
+      {/* <TouchableOpacity onPress={openFares}>
+        <Row style={styles.item}>
+          <Col>
+            <Row style={styles.item}><Text>Tarif</Text></Row>
+          </Col>
+
+          <Col style={{ alignItems: 'flex-end', alignSelf: 'center' }}>
+            <Icon name="ios-arrow-forward" style={{ color: gray.g8 }} />
+          </Col>
+        </Row>
+      </TouchableOpacity> */}
     </Content>
 
     <AppInfoModal
