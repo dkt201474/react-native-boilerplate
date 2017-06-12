@@ -9,6 +9,9 @@ import AppFares from '../components/DefaultMenu/AppFares';
 import AppUserTerms from '../components/DefaultMenu/AppUserTerms';
 import HelpNewAccount from '../components/Help/NewAccount';
 import HelpAssociateNewAccount from '../components/Help/AssociateAccount';
+import AppHomeHeader from '../components/Home/AppHomeHeader';
+import AppServiceBubble from '../components/Home/AppServiceBubble';
+import AppBubble from '../components/AppBubble';
 
 // exports
 export {
@@ -21,5 +24,8 @@ export {
   AppFares,
   AppPrivatePolicy,
   HelpAssociateNewAccount,
+  AppHomeHeader,
+  AppBubble,
+  AppServiceBubble,
   HelpNewAccount
 };
