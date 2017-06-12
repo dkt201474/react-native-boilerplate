@@ -11,28 +11,13 @@ import { text } from '../theme/AppStyles';
 const AppInfoModal = ({ visibleModal, title, content, closeModal }) =>
   (<View style={{ justifyContent: 'center' }}>
     <Modal isVisible={visibleModal}>
-
-      <TouchableOpacity
-          onPress={() => closeModal()}
-          style={{ alignItems: 'center', marginBottom: 20 }}
-      >
-        <Icon
-            name="ios-close-circle-outline"
-            style={{
-              textAlign: 'center',
-              fontSize: 30,
-              marginBottom: 10,
-              color: colors.white
-            }}
-        />
-      </TouchableOpacity>
-
       <ScrollView
           style={{
             paddingHorizontal: 15,
             paddingTop: 15,
             paddingBottom: 30,
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            borderRadius: 3
           }}
       >
         <Text style={[text.title, { textAlign: 'left' }]}>{title}</Text>
@@ -45,6 +30,21 @@ const AppInfoModal = ({ visibleModal, title, content, closeModal }) =>
             </Text>
           : content}
       </ScrollView>
+
+      <TouchableOpacity
+          onPress={() => closeModal()}
+          style={{ alignItems: 'center', marginTop: 20 }}
+      >
+        <Icon
+            name="ios-close-circle-outline"
+            style={{
+              textAlign: 'center',
+              fontSize: 30,
+              marginBottom: 10,
+              color: colors.white
+            }}
+        />
+      </TouchableOpacity>
     </Modal>
   </View>);
 

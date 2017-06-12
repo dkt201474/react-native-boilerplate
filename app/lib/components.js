@@ -5,6 +5,7 @@ import AppButton from '../components/AppButton';
 import AppModal from '../components/AppModal';
 import AppInfoModal from '../components/AppInfoModal';
 import AppPrivatePolicy from '../components/AppPrivatePolicy';
+import AppUserTerms from '../components/AppUserTerms';
 
 // exports
 export {
@@ -13,5 +14,6 @@ export {
   AppButton,
   AppModal,
   AppInfoModal,
+  AppUserTerms,
   AppPrivatePolicy
 };

@@ -43,7 +43,7 @@ const ResetPassword = ({ handleSubmit, invalid }) =>
             title="Réinitialiser"
         />
       </Grid>
-    </Content>
+      </Content>
   </Container>);
 
 ResetPassword.propTypes = {

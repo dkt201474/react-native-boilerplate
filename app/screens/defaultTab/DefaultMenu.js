@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import {
   AppHeader,
   AppInfoModal,
+  AppUserTerms,
   AppPrivatePolicy
 } from '../../lib/components';
 import { container } from '../../theme/AppStyles';
@@ -47,8 +48,10 @@ const DefaultMenu = ({
         <Row style={styles.item}><Text>Aide</Text></Row>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Row style={styles.item}><Text>Condition d&apos;utilisation</Text></Row>
+      <TouchableOpacity onPress={openUserContract}>
+        <Row style={styles.item}>
+          <Text>Conditions d&apos;utilisation</Text>
+        </Row>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={openPrivatePolicy}>
@@ -72,6 +75,13 @@ const DefaultMenu = ({
         content={AppPrivatePolicy}
         title="Politique de confidentialité"
         visibleModal={visibleModal === 'privatePolicy'}
+    />
+
+    <AppInfoModal
+        closeModal={closeModal}
+        content={AppUserTerms}
+        title="Conditions d'utilisation"
+        visibleModal={visibleModal === 'userContract'}
     />
 
   </Container>);
@@ -103,6 +113,7 @@ export default connect(
     closeModal: () => dispatch(ux.closeModal()),
     openAbout: () => dispatch(ux.openAbout('about')),
     openPrivatePolicy: () => dispatch(ux.openPrivatePolicy('privatePolicy')),
+    openUserContract: () => dispatch(ux.openUserContract('userContract')),
     openHelp: () => dispatch(ux.openHelp('help'))
   })
 )(DefaultMenu);
