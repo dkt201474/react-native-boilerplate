@@ -18,23 +18,16 @@ import { gray, colors } from '../../theme/Colors';
 /* actions  */
 import { ux } from '../../reducers/actions';
 
-const TITLE = {
-  about: 'À propos de EnanlyPay',
-  privatePolicy: 'Politique de confidentialité'
-};
-
-const CONTENT = {
-  about:
-    'EnanlyPay est un produit commercial de la société Enanlygroup qui fournit un moyen pour traiter et gérer les transactions en ligne. En cours de développement et d’essai, la première version du système de paiement EnanlyPay sera lancée officiellement en 2017. \n\nEnanlyPay est un système de paiement réfléchi pour l’Afrique qui utilise la base de consommateurs de ses partenaires potentiels que sont: MTN, Etisalat, Orange, Millicom, BhartiAirtel, STC, Zainet, Ooredoo, Vodafon.\n\nEnanlyPay a plusieurs produits pour plusieurs cibles: les consommateurs, les PME, Grandes Entreprises et le e-commerce. Il est disponible sur portable, Tablette et Ordinateur respectivement en version androïd, iOS et Windows'
-};
+const ABOUT =
+  'EnanlyPay est un produit commercial de la société Enanlygroup qui fournit un moyen pour traiter et gérer les transactions en ligne. En cours de développement et d’essai, la première version du système de paiement EnanlyPay sera lancée officiellement en 2017. \n\nEnanlyPay est un système de paiement réfléchi pour l’Afrique qui utilise la base de consommateurs de ses partenaires potentiels que sont: MTN, Etisalat, Orange, Millicom, BhartiAirtel, STC, Zainet, Ooredoo, Vodafon.\n\nEnanlyPay a plusieurs produits pour plusieurs cibles: les consommateurs, les PME, Grandes Entreprises et le e-commerce. Il est disponible sur portable, Tablette et Ordinateur respectivement en version androïd, iOS et Windows';
 
 const DefaultMenu = ({
   openAbout,
-  openHelp,
   openFares,
   openUserContract,
   openPrivatePolicy,
   closeModal,
+  navigation,
   visibleModal
 }) =>
   (<Container style={container.default}>
@@ -45,7 +38,7 @@ const DefaultMenu = ({
         <Row style={styles.item}><Text>À propos</Text></Row>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={openHelp}>
+      <TouchableOpacity onPress={() => navigation.navigate('Help')}>
         <Row style={styles.item}><Text>Aide</Text></Row>
       </TouchableOpacity>
 
@@ -66,8 +59,8 @@ const DefaultMenu = ({
 
     <AppInfoModal
         closeModal={closeModal}
-        content={CONTENT.about}
-        title={TITLE.about}
+        content={ABOUT}
+        title="À propos de EnanlyPay"
         visibleModal={visibleModal === 'about'}
     />
 
@@ -111,9 +104,9 @@ const styles = StyleSheet.create({
 
 DefaultMenu.propTypes = {
   closeModal: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired,
   openAbout: PropTypes.func.isRequired,
   openFares: PropTypes.func.isRequired,
-  openHelp: PropTypes.func.isRequired,
   openPrivatePolicy: PropTypes.func.isRequired,
   openUserContract: PropTypes.func.isRequired,
   visibleModal: PropTypes.any.isRequired
@@ -123,10 +116,9 @@ export default connect(
   (state) => ({ visibleModal: state.ux.visibleModal }),
   (dispatch) => ({
     closeModal: () => dispatch(ux.closeModal()),
-    openAbout: () => dispatch(ux.openAbout('about')),
-    openPrivatePolicy: () => dispatch(ux.openPrivatePolicy('privatePolicy')),
-    openUserContract: () => dispatch(ux.openUserContract('userContract')),
-    openFares: () => dispatch(ux.openFares('fares')),
-    openHelp: () => dispatch(ux.openHelp('help'))
+    openAbout: () => dispatch(ux.openModal('about')),
+    openPrivatePolicy: () => dispatch(ux.openModal('privatePolicy')),
+    openUserContract: () => dispatch(ux.openModal('userContract')),
+    openFares: () => dispatch(ux.openModal('fares'))
   })
 )(DefaultMenu);

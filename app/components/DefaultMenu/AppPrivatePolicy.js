@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { gray } from '../theme/Colors';
+import { gray } from '../../theme/Colors';
 
 const AppPrivatePolicy = (
   <View style={{ paddingBottom: 20 }}>

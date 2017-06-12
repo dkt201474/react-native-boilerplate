@@ -10,7 +10,7 @@ import {
 } from 'native-base';
 
 /* App imports */
-import { gray, yellow } from '../theme/Colors';
+import { gray, yellow } from '../../theme/Colors';
 
 /* Custom components */
 const Item = ({ bodyText, rightText, ...rest }) =>

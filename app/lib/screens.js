@@ -7,6 +7,7 @@ import FindUs from '../screens/defaultTab/FindUs';
 import ContactUs from '../screens/defaultTab/ContactUs';
 import DefaultMenu from '../screens/defaultTab/DefaultMenu';
 import Services from '../screens/defaultTab/Services';
+import Help from '../screens/defaultTab/Help';
 import Home from '../screens/home/Home';
 
 // exports
@@ -17,8 +18,10 @@ export {
   SignUp,
   SignUpValidation,
   ResetPassword,
+  // DefaultMenu
   FindUs,
   ContactUs,
+  Help,
   DefaultMenu,
   Services,
   Home

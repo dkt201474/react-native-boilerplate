@@ -6,6 +6,7 @@ import {
   SignUp,
   SignUpValidation,
   Home,
+  Help,
   ResetPassword
 } from '../lib/screens';
 
@@ -23,6 +24,14 @@ export default StackNavigator({
     navigationOptions: () => ({
       ...header,
       headerTitle: 'Inscription',
+      tabBarVisible: false
+    })
+  },
+  Help: {
+    screen: Help,
+    navigationOptions: () => ({
+      ...header,
+      headerTitle: 'Aide',
       tabBarVisible: false
     })
   },

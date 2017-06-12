@@ -27,37 +27,7 @@ const ux = (state = initialState, action) => {
   case uxType.OPEN_MODAL:
     return {
       ...state,
-      visibleModal: true
-    };
-
-  case uxType.OPEN_ABOUT:
-    return {
-      ...state,
-      visibleModal: 'about'
-    };
-
-  case uxType.OPEN_HELP:
-    return {
-      ...state,
-      visibleModal: 'help'
-    };
-
-  case uxType.OPEN_FARES:
-    return {
-      ...state,
-      visibleModal: 'fares'
-    };
-
-  case uxType.OPEN_USER_CONTRACT:
-    return {
-      ...state,
-      visibleModal: 'userContract'
-    };
-
-  case uxType.OPEN_PRIVATE_POLICY:
-    return {
-      ...state,
-      visibleModal: 'privatePolicy'
+      visibleModal: action.payload
     };
 
   default:
