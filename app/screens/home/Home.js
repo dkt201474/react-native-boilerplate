@@ -1,13 +1,13 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { Container, Content, Row, Grid, Col } from 'native-base';
 
 import Metrics from '../../theme/Metrics';
 import { gray, yellow, accent, colors } from '../../theme/Colors';
-import { AppHomeHeader, AppServiceBubble } from '../../lib/components';
+import { AppHomeHeader, AppServiceBubble, AppCard } from '../../lib/components';
 
-const Home = () =>
+const Home = ({ cards }) =>
   (<Container>
     <Content>
       <Grid>
@@ -38,7 +38,7 @@ const Home = () =>
 
         <View style={styles.cardList}>
           <Row style={styles.cardListHeader}>
-            <Col size={8}>
+            <Col size={8} style={{ paddingLeft: 25 }}>
               <Text style={styles.cardListHeaderText}>
                 MES COMPTES
               </Text>
@@ -48,16 +48,43 @@ const Home = () =>
             </TouchableOpacity>
           </Row>
 
-          <Row>
-            <Col style={styles.card}>
-              <Text>hi</Text>
-            </Col>
-          </Row>
+          {cards.length >= 1
+            ? <View>
+                <Row>
+                  <AppCard card={cards[0]} />
+                  {cards[1] && <AppCard card={cards[1]} />}
+                </Row>
+
+                {cards[2] &&
+                  <Row>
+                    <AppCard card={cards[2]} />
+                    {cards[3] && <AppCard card={cards[3]} />}
+                  </Row>}
+              </View>
+            : <View style={styles.info}>
+                <Text style={styles.infoText}>
+                  Vous n'avez ajouté aucun compte de nos partenaires pour le
+                  moment. Cliquer sur "Ajouter" pour ajouter un compte.
+                </Text>
+              </View>}
+
         </View>
       </Grid>
 
     </Content>
   </Container>);
+
+Home.propTypes = { cards: PropTypes.array.isRequired };
+Home.defaultProps = {
+  cards: [
+    {
+      accountName: 'Moov',
+      phoneNumber: '+229 95 00 47 73',
+      amount: '500 000',
+      currency: 'FCFA'
+    }
+  ]
+};
 
 const styles = StyleSheet.create({
   listServices: {
@@ -69,13 +96,12 @@ const styles = StyleSheet.create({
     width: Metrics.width * 0.96,
     alignSelf: 'center',
     backgroundColor: colors.white,
-    marginTop: 25
+    marginVertical: 25
   },
   cardListHeader: {
     borderBottomColor: gray.g5,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    paddingVertical: 10,
-    marginBottom: 10
+    paddingVertical: 10
   },
   cardListHeaderText: {
     textAlign: 'center',
@@ -84,7 +110,9 @@ const styles = StyleSheet.create({
   cardListHeaderLink: {
     color: yellow.y7,
     marginRight: 10
-  }
+  },
+  info: { padding: 10 },
+  infoText: { textAlign: 'center', color: gray.g7 }
 });
 
 export default Home;

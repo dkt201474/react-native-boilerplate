@@ -12,6 +12,7 @@ import HelpAssociateNewAccount from '../components/Help/AssociateAccount';
 import AppHomeHeader from '../components/Home/AppHomeHeader';
 import AppServiceBubble from '../components/Home/AppServiceBubble';
 import AppBubble from '../components/AppBubble';
+import AppCard from '../components/Home/AppCard';
 
 // exports
 export {
@@ -26,6 +27,7 @@ export {
   HelpAssociateNewAccount,
   AppHomeHeader,
   AppBubble,
+  AppCard,
   AppServiceBubble,
   HelpNewAccount
 };
