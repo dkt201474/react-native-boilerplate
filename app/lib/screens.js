@@ -10,6 +10,11 @@ import Services from '../screens/defaultTab/Services';
 import Help from '../screens/defaultTab/Help';
 import Home from '../screens/home/Home';
 
+import Go from '../screens/home/Go';
+import Express from '../screens/home/Express';
+import HomeMenu from '../screens/home/HomeMenu';
+import Transfer from '../screens/home/Transfer';
+
 // exports
 export {
   // Screens
@@ -24,5 +29,10 @@ export {
   Help,
   DefaultMenu,
   Services,
-  Home
+  // DefaultMenu
+  Home,
+  Go,
+  Express,
+  HomeMenu,
+  Transfer
 };

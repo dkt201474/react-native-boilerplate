@@ -5,9 +5,9 @@ import Root from '../../navigators/Root';
 *   - Retrieve gotoSignIn action
 *   - Retrieve app current state if that action is applied
 */
-// const initalAction = Root.router.getActionForPathAndParams('SignIn');
+const initalAction = Root.router.getActionForPathAndParams('SignIn');
 
-const initalAction = Root.router.getActionForPathAndParams('Home');
+// const initalAction = Root.router.getActionForPathAndParams('HomeTab');
 const initialState = Root.router.getStateForAction(initalAction);
 
 /*

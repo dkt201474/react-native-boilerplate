@@ -1,22 +1,25 @@
 import { header } from '../theme/AppStyles';
 import { StackNavigator } from 'react-navigation';
 
+/* App imports */
 import {
   SignIn,
   SignUp,
   SignUpValidation,
-  Home,
   Help,
   ResetPassword
 } from '../lib/screens';
 
+/* Nav imports */
+import HomeTab from './HomeTab';
+
 export default StackNavigator({
-  SignIn: {
-    screen: SignIn,
+  HomeTab: {
+    screen: HomeTab,
     navigationOptions: () => ({ header: false })
   },
-  Home: {
-    screen: Home,
+  SignIn: {
+    screen: SignIn,
     navigationOptions: () => ({ header: false })
   },
   SignUp: {

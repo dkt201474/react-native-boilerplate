@@ -62,7 +62,7 @@ const SignIn = ({ handleSubmit, navigation, ...rest }) =>
         </View>
 
         <AppButton
-            handleOnPress={handleSubmit(() => navigation.navigate('Home'))}
+            handleOnPress={handleSubmit(() => navigation.navigate('HomeTab'))}
             invalid={rest.invalid}
             title="Connexion"
         />

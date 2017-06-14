@@ -17,23 +17,21 @@ function cacheImages(images) {
     }
 
     return Expo.Asset.fromModule(image).downloadAsync();
-  })
+  });
 }
 
 class App extends Component {
-
   state = {
-    appIsReady: false,
+    appIsReady: false
   };
 
   componentWillMount() {
     this._loadAssetsAsync();
   }
 
-  render () {
-
+  render() {
     /* The app store is created */
-    const store = createStore( rootReducer, devToolsEnhancer());
+    const store = createStore(rootReducer, devToolsEnhancer());
 
     if (!this.state.appIsReady) {
       return <Expo.AppLoading />;
@@ -48,13 +46,12 @@ class App extends Component {
 
   async _loadAssetsAsync() {
     const imageAssets = cacheImages([
-      require('./assets/images/logo.png')
+      require('./assets/images/logo.png'),
+      require('./assets/images/homeBg.jpg')
     ]);
 
-    await Promise.all([
-      ...imageAssets,
-    ]);
-    this.setState({appIsReady: true});
+    await Promise.all([...imageAssets]);
+    this.setState({ appIsReady: true });
   }
 }
 
