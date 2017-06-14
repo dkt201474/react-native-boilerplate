@@ -23,6 +23,12 @@ export const backHandle = (nav, dispatch, NavigationActions) => {
 
     return true;
 
+  case 'Help':
+    dispatch(NavigationActions.back());
+    dispatch(NavigationActions.navigate({ routeName: 'DefaultMenu' }));
+
+    return true;
+
   default:
     return true;
   }
