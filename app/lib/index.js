@@ -19,13 +19,8 @@ export const backHandle = (nav, dispatch, NavigationActions) => {
   switch (currentScreen) {
   case 'SignUp':
   case 'ResetPassword':
-    dispatch(NavigationActions.back());
-
-    return true;
-
   case 'Help':
     dispatch(NavigationActions.back());
-    dispatch(NavigationActions.navigate({ routeName: 'DefaultMenu' }));
 
     return true;
 

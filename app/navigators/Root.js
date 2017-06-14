@@ -1,15 +1,31 @@
 import React from 'react';
-import { TabNavigator, TabBarBottom } from 'react-navigation';
+import { TabNavigator, TabBarBottom, StackNavigator } from 'react-navigation';
 import { Icon } from 'native-base';
 
 /* App import */
 import { yellow, gray, colors } from '../theme/Colors';
+import { header } from '../theme/AppStyles';
 
 /* Navigator import */
 import SignInStack from './SignInStack';
 
+const DefaultMenuWrapper = StackNavigator({
+  DefaultMenu: {
+    screen: DefaultMenu,
+    navigationOptions: () => ({ header: false })
+  },
+  Help: {
+    screen: Help,
+    navigationOptions: () => ({
+      ...header,
+      headerTitle: 'Aide',
+      tabBarVisible: false
+    })
+  }
+});
+
 /* screens import */
-import { FindUs, Services, DefaultMenu, ContactUs } from '../lib/screens';
+import { FindUs, Services, DefaultMenu, ContactUs, Help } from '../lib/screens';
 
 export default TabNavigator(
   {
@@ -60,8 +76,8 @@ export default TabNavigator(
           />)
       }
     },
-    DefaultMenu: {
-      screen: DefaultMenu,
+    DefaultMenuWrapper: {
+      screen: DefaultMenuWrapper,
       navigationOptions: {
         header: false,
         tabBarLabel: 'Menu',
