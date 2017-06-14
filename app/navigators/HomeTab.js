@@ -22,12 +22,14 @@ const HomeTab = TabNavigator(
     },
     Transfer: {
       screen: Transfer,
-      path: '/appservicemodal',
       navigationOptions: {
         header: false,
         tabBarLabel: 'Transfer',
         tabBarIcon: ({ focused, tintColor }) =>
-          <Icon name={focused ? 'ios-swap' : 'ios-swap-outline'} />
+          (<Icon
+              name={focused ? 'ios-swap' : 'ios-swap-outline'}
+              style={{ color: tintColor }}
+          />)
       }
     },
     Home: {
