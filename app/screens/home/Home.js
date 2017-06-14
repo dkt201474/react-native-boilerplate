@@ -7,7 +7,7 @@ import Metrics from '../../theme/Metrics';
 import { gray, yellow, accent, colors } from '../../theme/Colors';
 import { AppHomeHeader, AppServiceBubble, AppCard } from '../../lib/components';
 
-const Home = ({ cards }) =>
+const Home = ({ cards, navigation }) =>
   (<Container>
     <Content>
       <Grid>
@@ -16,21 +16,21 @@ const Home = ({ cards }) =>
         <Row style={styles.listServices}>
           <AppServiceBubble
               bgColor={accent.a3}
-              handleOnPress={null}
+              handleOnPress={() => navigation.navigate('Express')}
               iconName="ios-basket-outline"
               title="Express"
           />
 
           <AppServiceBubble
               bgColor={accent.a4}
-              handleOnPress={null}
+              handleOnPress={() => navigation.navigate('Go')}
               iconName="ios-cash-outline"
               title="Go"
           />
 
           <AppServiceBubble
               bgColor={accent.a2}
-              handleOnPress={null}
+              handleOnPress={() => navigation.navigate('Transfer')}
               iconName="ios-swap-outline"
               title="Transfer"
           />
@@ -74,7 +74,10 @@ const Home = ({ cards }) =>
     </Content>
   </Container>);
 
-Home.propTypes = { cards: PropTypes.array.isRequired };
+Home.propTypes = {
+  cards: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 Home.defaultProps = {
   cards: [
     {
