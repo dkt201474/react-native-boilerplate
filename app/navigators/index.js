@@ -6,6 +6,7 @@ import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 
 /* Navigator imports */
 import Root from './Root';
+import { backHandle } from '../lib';
 
 /*
     - The root navigator aware of redux is created
@@ -17,40 +18,13 @@ import Root from './Root';
 class AppWithNavigationState extends PureComponent {
   componentWillMount () {
     BackHandler.addEventListener('hardwareBackPress', () =>
-      this.backHandle(this.props.nav)
+      backHandle(this.props.nav, this.props.dispatch, NavigationActions)
     );
   }
   componentWillUnmount () {
     BackHandler.removeEventListener('hardwareBackPress', () =>
-      this.backHandle(this.props.nav)
+      backHandle(this.props.nav, this.props.dispatch, NavigationActions)
     );
-  }
-
-  getCurrentScreen (nav) {
-    if (!nav) {
-      return null;
-    }
-    const route = nav.routes[nav.index];
-
-    if (route.routes) {
-      return this.getCurrentScreen(route);
-    }
-
-    return route.routeName;
-  }
-
-  backHandle (nav) {
-    const currentScreen = this.getCurrentScreen(nav);
-
-    switch (currentScreen) {
-    case 'SignUp':
-      this.props.dispatch(NavigationActions.back());
-
-      return true;
-
-    default:
-      return true;
-    }
   }
 
   render () {
