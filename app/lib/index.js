@@ -18,6 +18,7 @@ export const backHandle = (nav, dispatch, NavigationActions) => {
 
   switch (currentScreen) {
   case 'SignUp':
+  case 'ResetPassword':
     dispatch(NavigationActions.back());
 
     return true;
