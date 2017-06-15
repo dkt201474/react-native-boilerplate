@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import { reducer as form } from 'redux-form';
+// import { reducer as form } from 'redux-form';
 
 /* load all reducers */
-import ux from './ux';
 import nav from './nav';
-import session from './session';
 
 /*
 * --> rootReducer
@@ -19,11 +17,6 @@ import session from './session';
 *         ...
 *       }
 */
-const rootReducer = combineReducers({
-  ux,
-  nav,
-  form,
-  session
-});
+const rootReducer = combineReducers({nav});
 
 export default rootReducer;

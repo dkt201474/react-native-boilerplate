@@ -6,11 +6,15 @@
 import { StackNavigator } from 'react-navigation';
 
 /* screens import */
-import { Home } from '../lib/screens';
+import { Home, Foo } from '../lib/screens';
 
 const HomeStack = StackNavigator({
   Home: {
     screen: Home,
+    navigationOptions: { header: false }
+  },
+  Foo: {
+    screen: Foo,
     navigationOptions: { header: false }
   }
 });

@@ -1,4 +1,5 @@
 import Root from '../../navigators/Root';
+import { NavigationActions } from 'react-navigation';
 
 /*
 * --> 1. Initial State
@@ -6,15 +7,7 @@ import Root from '../../navigators/Root';
 *   - Retrieve app current state after that action has been applied
 */
 const initalAction = Root.router.getActionForPathAndParams('Home');
-
 const initialState = Root.router.getStateForAction(initalAction);
-
-/*
-* --> 2. Actions types
-*
-*   - constants needed by the reEmailducer to handle actions dispatched
-*/
-// import types from '../actionsType';
 
 /*
 * --> 3. Nav Reducer
@@ -25,11 +18,17 @@ const initialState = Root.router.getStateForAction(initalAction);
 */
 const nav = (state = initialState, action) => {
   switch (action.type) {
-    // case types.Screen.MY_ACTION:
-    //   return Root.router.getStateForAction(
-    //     types.NavigationActions.navigate({ routeName: 'Home'}),
-    //     state
-    //   );
+  case 'GOTO_FOO':
+    return Root.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'Foo' }),
+        state
+      );
+
+  case 'GOTO_HOME':
+    return Root.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'Home' }),
+        state
+      );
 
   default:
     return Root.router.getStateForAction(action, state);
