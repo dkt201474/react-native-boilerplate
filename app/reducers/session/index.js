@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 *
 *   - constants needed by the reducer to handle actions dispatched
 */
-import types from '../actionsType';
+// import { actionsType } from '../actionsType';
 
 /*
 * --> 2. User reducers
@@ -14,36 +14,22 @@ import types from '../actionsType';
 */
 
 /* Initial state */
-const credentials = {
-  email: '',
-  password: '',
-  phoneNumber: '',
-};
+const initialState = {};
 
 /* Reducer */
-const user = (state = credentials, action) => {
+const user = (state = initialState, action) => {
   switch (action.type) {
-
-  // case types.ScreenName.ACTION:
-  //   return {
-  //     ...state,
-  //     email: action.payload.email,
-  //     password: action.payload.password,
-  //     phoneNumber: action.payload.phoneNumber,
-  //   };
-
   default:
     return state;
   }
 };
 
-
 /*
-* --> Session Reducer
+* --> Session Reducer (http://jamesknelson.com/5-types-react-application-state/)
 *
 *   - Hold all server cached data related to the user
 *   - Ex: transactions, userInfo...
 */
-const session = combineReducers({ user, });
+const session = combineReducers({ user });
 
 export default session;

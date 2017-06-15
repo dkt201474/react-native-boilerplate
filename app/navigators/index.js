@@ -9,10 +9,13 @@ import Root from './Root';
 import { backHandle } from '../lib';
 
 /*
-    - The root navigator aware of redux is created
+    - The AppWithNavigationState is the navigator aware of redux
     - It passes navigation prop that contains dispatch (func) and nav (obj)
     - Now every child component have navigation prop and
     - can trigger action that return a new nav object (Ex. change screen)
+    - this is the first compoent loaded when the app start
+    - The backHandle of android is handled here
+    - Every logic for routes are in the nav component
 */
 
 class AppWithNavigationState extends PureComponent {

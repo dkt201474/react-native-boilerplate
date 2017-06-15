@@ -1,14 +1,13 @@
 import Expo from 'expo';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import devToolsEnhancer from 'remote-redux-devtools';
 
-import rootReducer from './reducers';
+/* App imports */
 import AppWithNavigationState from './navigators';
+import store from './reducers/store';
 
 /*
-* -> functions for loading caching
+* -> functions for loading caching images
 */
 function cacheImages(images) {
   return images.map(image => {
@@ -20,19 +19,18 @@ function cacheImages(images) {
   });
 }
 
+/*
+    - Use state to display the loading screen before every caching data have be
+      loaded. The adress to the screen to be load can be see at exp.json
+*/
 class App extends Component {
-  state = {
-    appIsReady: false
-  };
+  state = { appIsReady: false };
 
   componentWillMount() {
     this._loadAssetsAsync();
   }
 
   render() {
-    /* The app store is created */
-    const store = createStore(rootReducer, devToolsEnhancer());
-
     if (!this.state.appIsReady) {
       return <Expo.AppLoading />;
     }
@@ -45,10 +43,11 @@ class App extends Component {
   }
 
   async _loadAssetsAsync() {
-    const imageAssets = cacheImages([
-      require('./assets/images/logo.png'),
-      require('./assets/images/homeBg.jpg')
-    ]);
+    const imageAssets = cacheImages(
+      [
+        // require('./assets/images/logo.png')
+      ]
+    );
 
     await Promise.all([...imageAssets]);
     this.setState({ appIsReady: true });

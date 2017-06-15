@@ -3,33 +3,21 @@
 *
 *   - constants needed by the reducer to handle actions dispatched
 */
-import { ux as uxType } from '../actionsType';
+// import { actionTypes } from '../actionsType';
 
 /*
-* --> UX Reducer: Communicational Reducer
+* --> UX Reducer: Communicational Reducer (http://jamesknelson.com/5-types-react-application-state/)
 *
 *   - manage all interaction config
 *   - Ex: show spiner, opening modal,
 */
 
 /* Initial state */
-const initialState = { visibleModal: '' };
+const initialState = {};
 
 /* Reducer */
 const ux = (state = initialState, action) => {
   switch (action.type) {
-  case uxType.CLOSE_MODAL:
-    return {
-      ...state,
-      visibleModal: false
-    };
-
-  case uxType.OPEN_MODAL:
-    return {
-      ...state,
-      visibleModal: action.payload
-    };
-
   default:
     return state;
   }

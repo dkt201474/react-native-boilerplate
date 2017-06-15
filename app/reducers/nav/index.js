@@ -2,12 +2,11 @@ import Root from '../../navigators/Root';
 
 /*
 * --> 1. Initial State
-*   - Retrieve gotoSignIn action
-*   - Retrieve app current state if that action is applied
+*   - Retrieve the action object needed to go to home screen
+*   - Retrieve app current state after that action has been applied
 */
-const initalAction = Root.router.getActionForPathAndParams('SignIn');
+const initalAction = Root.router.getActionForPathAndParams('Home');
 
-// const initalAction = Root.router.getActionForPathAndParams('HomeTab');
 const initialState = Root.router.getStateForAction(initalAction);
 
 /*
@@ -26,7 +25,7 @@ const initialState = Root.router.getStateForAction(initalAction);
 */
 const nav = (state = initialState, action) => {
   switch (action.type) {
-    // case types.SignIn.LOGIN_SUCCEEDED:
+    // case types.Screen.MY_ACTION:
     //   return Root.router.getStateForAction(
     //     types.NavigationActions.navigate({ routeName: 'Home'}),
     //     state

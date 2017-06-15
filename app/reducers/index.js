@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
   ux,
   nav,
   form,
-  session,
+  session
 });
 
 export default rootReducer;

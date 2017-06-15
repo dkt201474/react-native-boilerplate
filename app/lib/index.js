@@ -1,4 +1,6 @@
-export const createAction = (type) => (payload) => ({ type, payload });
+/*
+    - Utilities function helpers
+*/
 
 export const getCurrentScreen = (nav) => {
   if (!nav) {
@@ -13,13 +15,15 @@ export const getCurrentScreen = (nav) => {
   return route.routeName;
 };
 
+/*
+    - the function that will be call if the back android button is pressed
+    - action organised by screen name
+*/
 export const backHandle = (nav, dispatch, NavigationActions) => {
   const currentScreen = getCurrentScreen(nav);
 
   switch (currentScreen) {
-  case 'SignUp':
-  case 'ResetPassword':
-  case 'Help':
+  case 'Home':
     dispatch(NavigationActions.back());
 
     return true;

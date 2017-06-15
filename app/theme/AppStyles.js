@@ -1,3 +1,10 @@
+/*
+* -> helper for app styling
+*    
+*
+*
+*/
+
 import { gray, colors, yellow } from './Colors';
 
 export const header = {

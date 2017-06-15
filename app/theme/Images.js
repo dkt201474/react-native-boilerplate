@@ -1,6 +1,10 @@
-const images = {
-  logo: require('../assets/images/logo.png'),
-  homeBg: require('../assets/images/homeBg.jpg')
-};
+/*
+* -> Images is a map of adresses that map every images name with it's adress
+*    To use an image for exemple we just import that object
+*    No need to set the path of the image. (Ex. Images.logo)
+*
+*/
+
+const images = {};
 
 export default images;

@@ -1,7 +1,14 @@
+/*
+* -> Colors contains all the colors of the app
+*    Ex. (To use yellow), import { yellow } from 'path/to/colors'
+*    yellow.y1  // prints #fffaeb
+*
+*/
+
 export const info = {
   error: '#f04134',
   warning: '#ffbf00',
-  success: '#00a854',
+  success: '#00a854'
 };
 
 export const gray = {
@@ -14,7 +21,7 @@ export const gray = {
   g7: '#919191',
   g8: '#5a5a5a',
   g9: '#404040',
-  g10: '#222222',
+  g10: '#222222'
 };
 
 export const yellow = {
@@ -27,19 +34,19 @@ export const yellow = {
   y7: '#e67e22',
   y8: '#c17500',
   y9: '#a04f00',
-  y10: '#802800',
+  y10: '#802800'
 };
 
 export const accent = {
   a1: '#6200ea',
   a2: '#8e44ad',
   a3: '#3498db',
-  a4: '#d35400',
+  a4: '#d35400'
 };
 
 export const colors = {
   transparent: 'rgba(0,0,0,0)',
   bg: '#E9E9EF',
   white: '#f5f5f5',
-  black: '#111111',
+  black: '#111111'
 };
