@@ -44,6 +44,6 @@ AppWithNavigationState.propTypes = {
 };
 
 /* Binding to the store */
-const mapStateToProps = (state) => ({ nav: state.nav });
+const mapStateToProps = (state) => ({ nav: state.get('nav') });
 
 export default connect(mapStateToProps)(AppWithNavigationState);

@@ -24,29 +24,15 @@ export const gray = {
   g10: '#222222'
 };
 
-export const yellow = {
-  y1: '#fffaeb',
-  y2: '#fff3cf',
-  y3: '#ffe9a7',
-  y4: '#ffdd76',
-  y5: '#ffce3d',
-  y6: '#ffbf00',
-  y7: '#e67e22',
-  y8: '#c17500',
-  y9: '#a04f00',
-  y10: '#802800'
-};
-
-export const accent = {
-  a1: '#6200ea',
-  a2: '#8e44ad',
-  a3: '#3498db',
-  a4: '#d35400'
-};
-
 export const colors = {
+  title: '#5c6773',
+  text: '#a1aab3',
+  bg: '#f8f9fa',
+  lightRed: '#fd6776',
+  lightBlue: '#229ee6',
+  blue: '#0076ff',
+
   transparent: 'rgba(0,0,0,0)',
-  bg: '#E9E9EF',
-  white: '#f5f5f5',
-  black: '#111111'
+  black: '#111111',
+  white: '#fff'
 };
