@@ -1,3 +1,5 @@
+import { fromJS } from 'immutable';
+
 import Root from '../../navigators/Root';
 import { NavigationActions } from 'react-navigation';
 
@@ -7,7 +9,8 @@ import { NavigationActions } from 'react-navigation';
 *   - Retrieve app current state after that action has been applied
 */
 const initalAction = Root.router.getActionForPathAndParams('Home');
-const initialState = Root.router.getStateForAction(initalAction);
+// const initialState = Root.router.getStateForAction(initalAction);
+const initialState = fromJS(Root.router.getStateForAction(initalAction)).toJS();
 
 /*
 * --> 3. Nav Reducer
